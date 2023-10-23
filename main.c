@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 
 // Início da declaração das funções
 
@@ -104,7 +105,7 @@ int main() {
 			printf("--------------------------------------------\n\n");
 		
 			//recebo a entrada que vou converter
-			printf(">>Qual o número que deseja converter e a base desse número? \n"); // aqui também se pá explicar melhor o input
+			printf(">>Qual o numero que deseja converter e a base desse numero? \n"); // aqui também se pá explicar melhor o input
 
 			printf("--------------------------------------------\n");
 			printf("          CONVERSOES SUPORTADAS\n");
@@ -115,11 +116,11 @@ int main() {
 			printf(">>4 - OCTAL\n");
 			printf(">>5 - FECHAR\n");
 		
-			printf("$");
-			scanf("%d %d", &entrada, &baseConversor);
-			printf("\n");
+			// printf("$");
+			// scanf("%d %d", &entrada, &baseConversor);
+			// printf("\n");
 			
-			//a opção é basicamente o número que eu tenho e vou converter ele para binario, octal e hexadecimal;
+			//a opção é basicamente o numero que eu tenho e vou converter ele para binario, octal e hexadecimal;
 			printf(">>Digite para qual quer converter\n");
 			printf("$");
 			scanf("%d", &converter);
@@ -144,7 +145,7 @@ int main() {
 					printf("          		HEXADECIMAL\n");
 					printf("--------------------------------------------\n\n");
 
-					printf(">>Digite o número utilizando as letras maiúsculas\n");
+					printf(">>Digite o numero utilizando as letras maiúsculas\n");
 					printf("$");
 					scanf("%s", &numeroHexadecimal);
 					printf("\n");
@@ -189,7 +190,45 @@ int main() {
 
 int hexadecimalBinario (char hexadecimal[]) {
 	int resultado = 0;
-	size_t tamanho = strlen(hexadecimal);
+	int tamanho = strlen(hexadecimal);
+
+	// esse é o loop principal para converter hexadecimais em decimais
+	int numero;
+	for (int i = 0; i < tamanho; i++) {
+		// esse switch vai pegar o valor numérico correto do algarismo hexadecimal
+		// switch (hexadecimal[i]) {
+		// case 'A':
+		// 	numero = 10;
+		// 	break;
+		// case 'B':
+		// 	numero = 11;
+		// 	break;
+		// case 'C':
+		// 	numero = 12;
+		// 	break;
+		// case 'D':
+		// 	numero = 13;
+		// 	break;
+		// case 'E':
+		// 	numero = 14;
+		// 	break;
+		// case 'F':
+		// 	numero = 15;
+		// 	break;
+		// default:
+		// 	numero = hexadecimal[i] - 48;
+		// }
+
+		// esse if utiliza do ASCII para transformar o algarismo hexadecimal em seu formato numérico correto
+		if (hexadecimal[tamanho - 1 - i] >= 'A' && hexadecimal[tamanho - 1 - i] <= 'F') {
+			numero = hexadecimal[tamanho - 1 - i] - 55;
+		}
+		else {
+			numero = hexadecimal[tamanho - 1 - i] - '0';
+		}
+
+		resultado += numero * pow(16, i);
+	}
 
 	return resultado;
 }
