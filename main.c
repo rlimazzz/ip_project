@@ -1,7 +1,15 @@
 #include <stdio.h>
+#include <string.h>
+
+// Início da declaração das funções
+
+int hexadecimalBinario(char[]);
+
+// Fim da declaração das funções
 
 int main() {
 	int entrada, baseConversor, baseCalculadora, converter, contador = 0, opcao, entradaCalculo1, entradaCalculo2, operacao;
+	char numeroHexadecimal[20];
 	//Loop infinito para converter quantas vezes o usúario do programa quiser, ele vai ser finalizado quando o contador ser igual a 1 
 	while(contador < 1){
 		printf("--------------------------------------------\n");
@@ -29,7 +37,7 @@ int main() {
 			printf("|   7   |   8   |   9   |*|$|\n");
 			printf("------------------------\n\n");
 			
-			printf(">>ENTRADA : BASE, PRIMEIRO NUMERO, SEGUNDO NUMERO\n");
+			printf(">>ENTRADA : BASE, PRIMEIRO NUMERO, SEGUNDO NUMERO\n"); // aqui tem que mudar o printf, assim parece que precisa da virgula no input
 			
 			printf("$");
 			scanf("%d %d %d", &baseCalculadora, &entradaCalculo1, &entradaCalculo2);
@@ -96,10 +104,7 @@ int main() {
 			printf("--------------------------------------------\n\n");
 		
 			//recebo a entrada que vou converter
-			printf(">>Qual o número que deseja converter e a base desse número? \n");
-			printf("$");
-			scanf("%d %d", &entrada, &baseConversor);
-			printf("\n");
+			printf(">>Qual o número que deseja converter e a base desse número? \n"); // aqui também se pá explicar melhor o input
 
 			printf("--------------------------------------------\n");
 			printf("          CONVERSOES SUPORTADAS\n");
@@ -110,6 +115,10 @@ int main() {
 			printf(">>4 - OCTAL\n");
 			printf(">>5 - FECHAR\n");
 		
+			printf("$");
+			scanf("%d %d", &entrada, &baseConversor);
+			printf("\n");
+			
 			//a opção é basicamente o número que eu tenho e vou converter ele para binario, octal e hexadecimal;
 			printf(">>Digite para qual quer converter\n");
 			printf("$");
@@ -134,6 +143,13 @@ int main() {
 					printf("--------------------------------------------\n");
 					printf("          		HEXADECIMAL\n");
 					printf("--------------------------------------------\n\n");
+
+					printf(">>Digite o número utilizando as letras maiúsculas\n");
+					printf("$");
+					scanf("%s", &numeroHexadecimal);
+					printf("\n");
+
+					printf(">>O resultado da conversão é: %d\n", hexadecimalBinario(numeroHexadecimal));
 					break;
 				case 4:
 				
@@ -168,3 +184,14 @@ int main() {
 	}
 	return 0;
 }
+
+// Início das funções de conversão
+
+int hexadecimalBinario (char hexadecimal[]) {
+	int resultado = 0;
+	size_t tamanho = strlen(hexadecimal);
+
+	return resultado;
+}
+
+// Fim das funções de conversão
