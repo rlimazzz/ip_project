@@ -1,5 +1,17 @@
 #include <stdio.h>
 
+/* 
+Início da declaração prévia das variáveis
+ */
+
+char[] calculadoraHexaAdição(char[], char[]);
+
+int max(int, int);
+
+/* 
+Fim da declaração prévia das variáveis
+ */
+
 int main() {
 	int entrada, baseConversor, baseCalculadora, converter, contador = 0, opcao, entradaCalculo1, entradaCalculo2, operacao;
 	//Loop infinito para converter quantas vezes o usúario do programa quiser, ele vai ser finalizado quando o contador ser igual a 1 
@@ -168,3 +180,62 @@ int main() {
 	}
 	return 0;
 }
+
+/* 
+* Início das funções de calculadora
+*/
+
+// essa função recebe duas strings de números hexadecimais com letras maiúsculas, soma elas e retorna uma string contendo a soma
+char[] calculadoraHexaAdição(char valor1[], char valor2[]) {
+	int tamanho1 = sizeof(valor1) / sizeof(valor1[0]);
+	int tamanho2 = sizeof(valor2) / sizeof(valor2[0]);
+	int algarismo1, algarismo2;
+	int resto = 0;
+
+	int tamanhoMaximo = max(tamanho1, tamanho2);
+
+	char resultado[tamanhoMaximo];
+	
+	for (int i = 0; i < tamanhoMaximo; i++) {
+		// esses dois ifs pegam os valores numéricos dos atuais algarismos sendo somados
+		if (valor1[tamanho1 - 1 - i] >= 'A' && valor1[tamanho1 - 1 - i] <= 'F') {
+			algarismo1 = valor1[tamanho1 - 1 - i] - 55;
+		}
+		else {
+			algarismo1 = valor1[tamanho1 - 1 - i] - '0';
+		}
+		if (valor2[tamanho2 - 1 - i] >= 'A' && valor2[tamanho2 - 1 - i] <= 'F') {
+			algarismo2 = valor2[tamanho2 - 1 - i] - 55;
+		}
+		else {
+			algarismo2 = valor2[tamanho2 - 1 - i] - '0';
+		}
+
+		if (algarismo1 + algarismo2 > 15) {
+			resultado[tamanhoMaximo - 1 - i] = algarismo1 + algarismo2 - resto;
+			resto = (algarismo1 + algarismo2) / 10;
+		}
+
+		if (resultado[tamanhoMaximo - 1 - i] > 9) {
+
+		}
+	}
+}
+
+// Fim das funções de calculadora
+
+/* 
+* Início das funções globais
+*/
+
+// essa função recebe dois números inteiros e retorna o maior dentre eles.
+int max(int num1, int num2) {
+	if (num1 >= num2) {
+		return num1;
+	}
+	else {
+		return num2;
+	}
+}
+
+// Fim das funções globais
