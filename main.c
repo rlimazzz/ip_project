@@ -1,19 +1,25 @@
 #include <stdio.h>
+#include <string.h>
 
 /* 
 Início da declaração prévia das variáveis
  */
 
-char[] calculadoraHexaAdição(char[], char[]);
+char *calculadoraHexaAdicao(char *valor1, char *valor2);
 
 int max(int, int);
+int valorNumerico(char valor);
+char valorChar(int valor);
 
 /* 
 Fim da declaração prévia das variáveis
  */
 
 int main() {
-	int entrada, baseConversor, baseCalculadora, converter, contador = 0, opcao, entradaCalculo1, entradaCalculo2, operacao;
+	calculadoraHexaAdicao("", "");
+
+	int entrada, baseConversor, baseCalculadora, converter, contador = 0, opcao, operacao;
+	char entradaCalculo1[20], entradaCalculo2[20];
 	//Loop infinito para converter quantas vezes o usúario do programa quiser, ele vai ser finalizado quando o contador ser igual a 1 
 	while(contador < 1){
 		printf("--------------------------------------------\n");
@@ -65,6 +71,16 @@ int main() {
 					printf("--------------------------------------------\n");
 					printf("          	SOMA\n");
 					printf("--------------------------------------------\n\n");
+
+					switch (baseCalculadora) {
+					case 16:
+						printf("RESULTADO DA SOMA: %s\n", calculadoraHexaAdicao(entradaCalculo1, entradaCalculo2));
+						break;
+					
+					default:
+						break;
+					}
+
 					break;
 					
 				case 2: 
@@ -186,41 +202,40 @@ int main() {
 */
 
 // essa função recebe duas strings de números hexadecimais com letras maiúsculas, soma elas e retorna uma string contendo a soma
-char[] calculadoraHexaAdição(char valor1[], char valor2[]) {
-	int tamanho1 = sizeof(valor1) / sizeof(valor1[0]);
-	int tamanho2 = sizeof(valor2) / sizeof(valor2[0]);
-	int algarismo1, algarismo2;
+char *calculadoraHexaAdicao(char *valor1, char *valor2) {
+	valor1 = "1";
+	valor2 = "2";
+
+	int tamanho1 = strlen(valor1);
+	int tamanho2 = strlen(valor2);
+	int algarismo1, algarismo2, numeroAtual;
 	int resto = 0;
 
 	int tamanhoMaximo = max(tamanho1, tamanho2);
 
-	char resultado[tamanhoMaximo];
+	char resultado[tamanhoMaximo + 1];
 	
-	for (int i = 0; i < tamanhoMaximo; i++) {
-		// esses dois ifs pegam os valores numéricos dos atuais algarismos sendo somados
-		if (valor1[tamanho1 - 1 - i] >= 'A' && valor1[tamanho1 - 1 - i] <= 'F') {
-			algarismo1 = valor1[tamanho1 - 1 - i] - 55;
-		}
-		else {
-			algarismo1 = valor1[tamanho1 - 1 - i] - '0';
-		}
-		if (valor2[tamanho2 - 1 - i] >= 'A' && valor2[tamanho2 - 1 - i] <= 'F') {
-			algarismo2 = valor2[tamanho2 - 1 - i] - 55;
-		}
-		else {
-			algarismo2 = valor2[tamanho2 - 1 - i] - '0';
+	for (int i = 0; i < tamanhoMaximo + 1; i++) {
+		if (i == tamanhoMaximo) {
+			resultado[tamanhoMaximo - 1 - i] = valorChar(resto);
+			continue;
 		}
 
-		if (algarismo1 + algarismo2 > 15) {
-			resultado[tamanhoMaximo - 1 - i] = algarismo1 + algarismo2 - resto;
-			resto = (algarismo1 + algarismo2) / 10;
+		algarismo1 = valorNumerico(valor1[tamanho1 - 1 - i]);
+		algarismo2 = valorNumerico(valor2[tamanho1 - 1 - i]);
+
+		numeroAtual = algarismo1 + algarismo2 + resto;
+		if (numeroAtual > 15) {
+			resto = (algarismo1 + algarismo2 + resto) / 15;
+			numeroAtual -= resto / 10;
 		}
 
-		if (resultado[tamanhoMaximo - 1 - i] > 9) {
-
-		}
+		resultado[tamanhoMaximo - 1 - i] = valorChar(numeroAtual);
 	}
+
+	printf("%s\n", resultado);
 }
+// estou com problemas para fazer o último algarismo funcionar e para fazer os números serem colocados no resultado na ordem certa
 
 // Fim das funções de calculadora
 
@@ -228,13 +243,33 @@ char[] calculadoraHexaAdição(char valor1[], char valor2[]) {
 * Início das funções globais
 */
 
-// essa função recebe dois números inteiros e retorna o maior dentre eles.
+// Max: recebe dois números inteiros e retorna o maior dentre eles.
 int max(int num1, int num2) {
 	if (num1 >= num2) {
 		return num1;
 	}
 	else {
 		return num2;
+	}
+}
+
+// valorNumerico: recebe um charactere e retorna seu valor numérico de acordo com a tabela ascii
+int valorNumerico (char valor) {
+	if (valor >= 'A' && valor <= 'F') {
+			return valor - 55;
+	}
+	else {
+		return valor - '0';
+	}
+}
+
+// valorChar: recebe um charactere e retorna seu formato em char, convertendo os números para letras
+char valorChar (int valor) {
+	if (valor > 9) {
+		return valor + 55;
+	}
+	else {
+		return valor + '0';
 	}
 }
 
