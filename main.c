@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <math.h>
 
+int adiçaooctal () {
+    return 1;
+}
+
 
 //transformador de números para caracteres ----> usar em todos os conversores hexadecimais
 char numeroEMCHAR(long long int numero)
