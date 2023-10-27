@@ -3,7 +3,7 @@
 
 
 //transformador de números para caracteres ----> usar em todos os conversores hexadecimais
-char numeroEMCHAR(long int numero)
+char numeroEMCHAR(long long int numero)
  {
     if (numero >= 0 && numero <= 9)
     {
@@ -20,9 +20,9 @@ char numeroEMCHAR(long int numero)
 
  //decimal PARA binário ----> divisão do número decimal por 2, atribuição do resto para o número binário final.
  //sem erros -- adicionar casos de restrição
-long int decimalBINARIO(long int decimal)
+long long int decimalBINARIO(long long int decimal)
 {
-    long int binario = 0, base = 1;
+    long long int binario = 0, base = 1;
     int resto, i, n = 0;
 
         while (decimal > 0)
@@ -37,9 +37,9 @@ long int decimalBINARIO(long int decimal)
 
  //decimal PARA octal ----> divisão do número decimal por 8, atribuição do inverso do resto para o número octal final.
 //sem erros ---- adicionar casos de restrição
-long int decimalOCTAL(long int decimal)
+long long int decimalOCTAL(long long int decimal)
 {
-    long int octal = 0, Ioctal = 0;
+    long long int octal = 0, Ioctal = 0;
     int resto, i, n = 0;
 
         while(decimal > 0)
@@ -62,10 +62,10 @@ long int decimalOCTAL(long int decimal)
 
 //decimal PARA hexadecimal ----> divisão do número decimal por 16, atribuição do inverso do resto para o número hexadecimal final.
 // ----------------------------> efetuar a divisão de todos os algarismos por 16, e verificar se deve ser trocado por CHAR, inverter.
-long int decimalHEXADECIMAL(long int decimal, char hexa[])
+long long int decimalHEXADECIMAL(long long int decimal, char hexa[])
 {
     int i = 0;
-    long int resto;
+    long long int resto;
     char charHEXA;
 
     while(decimal > 0)
@@ -95,11 +95,11 @@ long int decimalHEXADECIMAL(long int decimal, char hexa[])
 
 //binário PARA decimal ----> contador de algarismos, conversão por potenciação do número 2 à posição do algarismo.
 //sem erros ---- adicionar casos de restrição
-long int binarioDECIMAL(long int binario)
+long long int binarioDECIMAL(long long int binario)
 {
-    long int Idecimal, decimal = 0;
+    long long int Idecimal, decimal = 0;
     int i, n = 0;
-    long int Ibinario = binario;
+    long long int Ibinario = binario;
 
         do
         {
@@ -119,11 +119,11 @@ long int binarioDECIMAL(long int binario)
 
 //binário PARA octal ----> contador de algarismos, fragmentação do número binário em partes de 3 algarismo, conversão de cada fração + adesão das partes.
 //sem erros ---- adicionar casos de restrição
-long int binarioOCTAL(long int binario)
+long long int binarioOCTAL(long long int binario)
 {
-    long int Ioctal, octal = 0;
+    long long int Ioctal, octal = 0;
     int i, j, n = 0, In = 0;
-    long int Ibinario = binario;
+    long long int Ibinario = binario;
 
         do
         {
@@ -159,10 +159,10 @@ long int binarioOCTAL(long int binario)
 
 //binário PARA hexadecimal
 //fetuar a divisão de todos os algarismos por 16, e verificar se deve ser trocado por CHAR, inverter.
-long int binarioHEXA(long int binario, char Hexa[])
+long long int binarioHEXA(long long int binario, char Hexa[])
 {
     int j, i = 0;
-    long int digito = 0, numeroDECIMAL, numeroHEXA = 0;
+    long long int digito = 0, numeroDECIMAL, numeroHEXA = 0;
     int bit, base;
     char charHEXA;
 
@@ -205,11 +205,11 @@ long int binarioHEXA(long int binario, char Hexa[])
 
 //octal PARA decimal ----> contador de algarismos, conversão por potenciação do número 8 à posição do algarismo.
 //sem erros ---- adicionar casos de restrição
-long int octalDECIMAL(long int octal)
+long long int octalldECIMAL(long long int octal)
 {
-    long int Idecimal, decimal = 0;
+    long long int Idecimal, decimal = 0;
     int i, n = 0;
-    long int Ioctal = octal;
+    long long int Ioctal = octal;
 
         do
         {
@@ -229,22 +229,22 @@ long int octalDECIMAL(long int octal)
 
 //octal PARA binário ----> converto o ultimo número do algarismo PAR binario e, inverto o resultado.
 //sem erros ---- adicionar casos de restrição
-long int octalBINARIO(long int octal)
+long long int octalBINARIO(long long int octal)
 {
-    long int binario = 0;
-    long int base = 1;
+    long long int binario = 0;
+    long long int base = 1;
 
     while (octal > 0)
     {
-        int octalD = octal % 10;
-        long int binarioD = 0;
-        long int peso = 1;
+        int octalld = octal % 10;
+        long long int binarioD = 0;
+        long long int peso = 1;
 
-        while (octalD > 0)
+        while (octalld > 0)
         {
-            int resto = octalD % 2;
+            int resto = octalld % 2;
             binarioD += resto * peso;
-            octalD /= 2;
+            octalld /= 2;
             peso *= 10;
         }
 
@@ -260,23 +260,23 @@ long int octalBINARIO(long int octal)
 
 //octal PARA hexadecimal
 
-long int octalHEXA(long int octal, char Hexa[])
+long long int octalHEXA(long long int octal, char Hexa[])
 {
-    long int binario = 0;
-    long int base = 1;
+    long long int binario = 0;
+    long long int base = 1;
     int i;
 
     while (octal > 0)
     {
-        int octalD = octal % 10;
-        long int binarioD = 0;
-        long int peso = 1;
+        int octalld = octal % 10;
+        long long int binarioD = 0;
+        long long int peso = 1;
 
-        while (octalD > 0)
+        while (octalld > 0)
         {
-            int resto = octalD % 2;
+            int resto = octalld % 2;
             binarioD += resto * peso;
-            octalD /= 2;
+            octalld /= 2;
             peso *= 10;
         }
 
@@ -292,7 +292,7 @@ long int octalHEXA(long int octal, char Hexa[])
 }
 
 //transformador de caracteres para números ----> aplicação em todos os hexadecimais
-long int charEMNUMERO(char Hexa)
+long long int charEMNUMERO(char Hexa)
 {
     if (Hexa >= '0' && Hexa <= '9')
      {
@@ -306,9 +306,9 @@ long int charEMNUMERO(char Hexa)
 }
 
 //hexadecimal PARA decimal
-long int hexaDECIMAL(char Hexa[])
+long long int hexaDECIMAL(char Hexa[])
 {
-    long int decimal = 0;
+    long long int decimal = 0;
     int i = 0;
 
     while (Hexa[i] != '\0')
@@ -333,11 +333,11 @@ long int hexaDECIMAL(char Hexa[])
 
 
 //hexadecimal PARA binário
-long int hexaBINARIO(char Hexa[])
+long long int hexaBINARIO(char Hexa[])
 {
-    long int decimal = 0;
+    long long int decimal = 0;
     int i = 0;
-    long int binario = 0, base = 1;
+    long long int binario = 0, base = 1;
     int resto, n = 0;
 
     decimal = hexaDECIMAL(Hexa);
@@ -354,10 +354,10 @@ long int hexaBINARIO(char Hexa[])
 }
 
 //hexadecimal PARA octal
-long int hexaOCTAL(char Hexa[])
+long long int hexaOCTAL(char Hexa[])
 {
-    long int decimal = hexaDECIMAL(Hexa);
-    long int octal = 0, Ioctal = 0;
+    long long int decimal = hexaDECIMAL(Hexa);
+    long long int octal = 0, Ioctal = 0;
     int resto, i, n = 0;
 
         while(decimal > 0)
@@ -382,9 +382,15 @@ long int hexaOCTAL(char Hexa[])
 
 
 int main() {
-	int entrada = 0, baseConversor, baseCalculadora, converter, contador = 0, opcao, entradaCalculo1, entradaCalculo2, operacao;
+	int baseConversor, baseCalculadora, converter, contador = 0, opcao, entradaCalculo1, entradaCalculo2, operacao;
 	//Loop infinito para converter quantas vezes o usúario do programa quiser, ele vai ser finalizado quando o contador ser igual a 1
 	while(contador == 0) {
+         long long int decimal;
+         long long int binario;
+         long long int octal;
+         long long hexa;
+         long long int entrada = 0;
+
 		printf("\n\n");
 		printf("--------------------------------------------\n");
 		printf("          QUAL OPÇÃO VOCÊ DESEJA\n");
@@ -477,7 +483,7 @@ int main() {
 		{
 				char Hexa[50];
 				int i, BASE = 0, BASE2 = 0;
-				long int tamanho;
+				long long int tamanho;
 
 
 				
@@ -495,27 +501,68 @@ int main() {
 				printf(">> [16] - HEXADECIMAL\n");
 				printf("\n~ ");
 				scanf("%d", &BASE);
+                if(BASE != 2 && BASE != 8 && BASE != 10 && BASE != 16)
+                {
+                    printf("ERRO: selecione um sistema númerico válido\n");
+                    contador++;
+                    return 0;
+                }
 
 				//recebo a entrada que vou converter
 				printf("\n>>Qual o número que deseja converter? \n");
 				printf("~ ");
 
+                int funcionaporfavor = 0;
 				if(BASE == 16)
 				{
 					scanf("%s", Hexa);
 				}
-				else
+				else if(BASE == 2)
 				{
-					scanf("%d", &entrada);
-				}
+                    int j = 0;
+					scanf("%lld", &entrada);
+                    binario = entrada;
+                    do
+                    {
+                        j = (entrada % 10);
+                        if(j > 1 || j < 0)
+                        {
+                            printf("ERRO: digite um número binário válido!\n");  
+                            funcionaporfavor++;
+                            return 0;
 
+                        }
+                        entrada /= 10;
+                    }while(entrada > 0);
+				}
+                else if(BASE == 8)
+				{
+                    int j = 0;
+					scanf("%lld", &entrada);
+                    octal = entrada;
+                    do
+                    {
+                        j = (entrada % 10);
+                        if(j == 8 || j == 9)
+                        {
+                            printf("ERRO: digite um número octal válido!\n");
+                            funcionaporfavor++;
+                            return 0;
+                        }
+                        entrada /= 10;
+                    }while(entrada > 0);
+				}
+                else
+                {
+                    scanf("%lld", &entrada);
+                    decimal = entrada;
+					hexa = entrada;
+                }
+
+				
 				printf("\n");
 
 				//construi o codigo baseado em suas proprias variaveis.
-				long int decimal = entrada;
-				long int binario = entrada;
-				long int octal = entrada;
-				long int hexa = entrada;
 
 
 				printf(">>Selecione a base desejada para a conversão.\n");
@@ -557,6 +604,14 @@ int main() {
 						return 0;
 					}
 
+                if(BASE2 != 2 && BASE2 != 8 && BASE2 != 10 && BASE2 != 16)
+                {
+                    printf("ERRO: selecione um sistema númerico válido!\n");
+                    contador++;
+                    return 0;
+                }
+               
+
 				//a opção é basicamente o número que eu tenho e vou converter ele para binario, octal e hexadecimal;
 				switch (BASE)
 				 {
@@ -572,7 +627,7 @@ int main() {
 						printf("CONVERSÂO:\n");
 								// Caso para BASE = 2 e BASE2 = 8
 								octal = binarioOCTAL(binario);
-				   				printf("%ld(2) = %ld(8)\n", binario, octal);
+				   				printf("%lld(2) = %lld(8)\n", binario, octal);
 								break;
 							case 10:
 						printf(" - DECIMAL\n");
@@ -580,7 +635,7 @@ int main() {
 						printf("CONVERSÂO:\n");
 								// Caso para BASE = 2 e BASE2 = 10
 								decimal = binarioDECIMAL(binario);
-				   				printf("%ld(2) = %ld(10)\n", binario, decimal);
+				   				printf("%lld(2) = %lld(10)\n", binario, decimal);
 								break;
 							case 16:
 						printf(" - HEXADECIMAL\n");
@@ -589,7 +644,7 @@ int main() {
 								// Caso para BASE = 2 e BASE2 = 16
 								tamanho = binarioHEXA(octal, Hexa);
 
-								printf("%ld(8) = ", binario);
+								printf("%lld(8) = ", binario);
 								for(i = 0; i < tamanho; i++)
 				   				 {
 					   				 printf("%c", Hexa[i]);
@@ -610,15 +665,15 @@ int main() {
 								printf("CONVERSÂO:\n");
 								// Caso para BASE = 8 e BASE2 = 2
 								binario = octalBINARIO(octal);
-				   				printf("%ld(8) = %ld(2)\n", octal, binario);
+				   				printf("%lld(8) = %lld(2)\n", octal, binario);
 								break;
 							case 10:
 								printf(" - DECIMAL\n");
 								printf("--------------------------------------------\n");
 								printf("CONVERSÂO:\n");
 								// Caso para BASE = 8 e BASE2 = 10
-								decimal = octalDECIMAL(octal);
-				   				printf("%ld(8) = %ld(10)\n", octal, decimal);
+								decimal = octalldECIMAL(octal);
+				   				printf("%lld(8) = %lld(10)\n", octal, decimal);
 								break;
 							case 16:
 								printf(" - HEXADECIMAL\n");
@@ -627,7 +682,7 @@ int main() {
 											// Caso para BASE = 8 e BASE2 = 16
 											tamanho = octalHEXA(octal, Hexa);
 
-											printf("%ld(8) = ", octal);
+											printf("%lld(8) = ", octal);
 											for(i = 0; i < tamanho; i++)
 							   				 {
 								   				 printf("%c", Hexa[i]);
@@ -649,7 +704,7 @@ int main() {
 								printf("CONVERSÂO:\n");
 								// Caso para BASE = 10 e BASE2 = 2
 								binario = decimalBINARIO(decimal);
-							   	printf("%ld(10) = %ld(2)\n", decimal, binario);
+							   	printf("%lld(10) = %lld(2)\n", decimal, binario);
 								break;
 							case 8:
 								printf(" - OCTAL\n");
@@ -657,7 +712,7 @@ int main() {
 								printf("CONVERSÂO:\n");
 								// Caso para BASE = 10 e BASE2 = 8
 								octal = decimalOCTAL(decimal);
-				   				printf("%ld(10) = %ld(8)\n", decimal, octal);
+				   				printf("%lld(10) = %lld(8)\n", decimal, octal);
 								break;
 							case 16:
 								printf(" - HEXADECIMAL\n");
@@ -665,7 +720,7 @@ int main() {
 								printf("CONVERSÂO:\n");
 								// Caso para BASE = 10 e BASE2 = 16
 								tamanho = decimalHEXADECIMAL(decimal, Hexa);
-								printf("%ld(10) = ", decimal);
+								printf("%lld(10) = ", decimal);
 
 								for(i = 0; i < tamanho; i++)
 						   		{
@@ -689,7 +744,7 @@ int main() {
 								// Caso para BASE = 16 e BASE2 = 2
 
 				   				binario = hexaBINARIO(Hexa);
-								printf("%s(16) = %ld(2)\n", Hexa, binario);
+								printf("%s(16) = %lld(2)\n", Hexa, binario);
 								break;
 							case 8:
 								printf(" - OCTAL\n");
@@ -698,7 +753,7 @@ int main() {
 											// Caso para BASE = 16 e BASE2 = 8
 
 				   				octal = hexaOCTAL(Hexa);
-								printf("%s(16) = %ld(8)\n", Hexa, octal);
+								printf("%s(16) = %lld(8)\n", Hexa, octal);
 								break;
 							case 10:
 								printf(" - DECIMAL\n");
@@ -707,10 +762,30 @@ int main() {
 											// Caso para BASE = 16 e BASE2 = 10
 
 				   				decimal = hexaDECIMAL(Hexa);
-								printf("%s(16) = %ld(10)\n", Hexa, decimal);
+								printf("%s(16) = %lld(10)\n", Hexa, decimal);
 								break;
 						}
 							 }
+
+                             char g;
+                             printf("\n\nContinuar?\n [Y]:\n [N]:\n\n ~");
+                             getchar();
+                                    scanf(" %c", &g);
+                                    if(g == 'Y' || g == 'y')
+                                    {
+                                        continue;
+                                    }
+                                    else if(g == 'N' || 'n')
+                                    {
+                                        contador++;
+                                    }
+                                    else
+                                    {
+                                        return 0;
+                                    }
+                             
+                   
+
 						}
 
 		else if(opcao == 3) {
