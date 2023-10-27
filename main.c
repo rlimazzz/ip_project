@@ -1,23 +1,21 @@
 #include <stdio.h>
 #include <string.h>
 
-/* 
-Início da declaração prévia das variáveis
- */
+/*-------------------------------------------------
+* Início da declaração prévia das variáveis
+-------------------------------------------------*/
 
-char *calculadoraHexaAdicao(char *valor1, char *valor2);
+void calculadoraHexaAdicao(char *valor1, char *valor2);
 
 int max(int, int);
 int valorNumerico(char valor);
 char valorChar(int valor);
 
-/* 
-Fim da declaração prévia das variáveis
- */
+/*-------------------------------------------------
+*Fim da declaração prévia das variáveis
+-------------------------------------------------*/
 
 int main() {
-	calculadoraHexaAdicao("", "");
-
 	int entrada, baseConversor, baseCalculadora, converter, contador = 0, opcao, operacao;
 	char entradaCalculo1[20], entradaCalculo2[20];
 	//Loop infinito para converter quantas vezes o usúario do programa quiser, ele vai ser finalizado quando o contador ser igual a 1 
@@ -50,7 +48,7 @@ int main() {
 			printf(">>ENTRADA : BASE, PRIMEIRO NUMERO, SEGUNDO NUMERO\n");
 			
 			printf("$");
-			scanf("%d %d %d", &baseCalculadora, &entradaCalculo1, &entradaCalculo2);
+			scanf("%d %s %s", &baseCalculadora, &entradaCalculo1, &entradaCalculo2);
 			printf("\n");
 			
 			printf(">>1 - SOMA\n");
@@ -74,7 +72,7 @@ int main() {
 
 					switch (baseCalculadora) {
 					case 16:
-						printf("RESULTADO DA SOMA: %s\n", calculadoraHexaAdicao(entradaCalculo1, entradaCalculo2));
+						calculadoraHexaAdicao(entradaCalculo1, entradaCalculo2);
 						break;
 					
 					default:
@@ -188,7 +186,7 @@ int main() {
 				printf(">>Ryan Gabryel\n");
 				printf(">>Luiz Renato\n");
 				printf(">>Rafael Mattos\n");
-				printf(">>Felipe S\n");
+				printf(">>Felipe Sucupira	\n");
 				//contador = 1, para sair do while true, já que 5 é o caso de saída
 				contador++;
 				break;
@@ -197,15 +195,12 @@ int main() {
 	return 0;
 }
 
-/* 
+/*-------------------------------------------------
 * Início das funções de calculadora
-*/
+-------------------------------------------------*/
 
-// essa função recebe duas strings de números hexadecimais com letras maiúsculas, soma elas e retorna uma string contendo a soma
-char *calculadoraHexaAdicao(char *valor1, char *valor2) {
-	valor1 = "1";
-	valor2 = "2";
-
+// calculadoraHexaAdicao: recebe duas strings de números hexadecimais com letras maiúsculas, soma os números e printa o resultado
+void calculadoraHexaAdicao(char *valor1, char *valor2) {
 	int tamanho1 = strlen(valor1);
 	int tamanho2 = strlen(valor2);
 	int algarismo1, algarismo2, numeroAtual;
@@ -213,37 +208,45 @@ char *calculadoraHexaAdicao(char *valor1, char *valor2) {
 
 	int tamanhoMaximo = max(tamanho1, tamanho2);
 
-	char resultado[tamanhoMaximo + 1];
+	char resultado[tamanhoMaximo + 2];
 	
-	for (int i = 0; i < tamanhoMaximo + 1; i++) {
-		if (i == tamanhoMaximo) {
-			resultado[tamanhoMaximo - 1 - i] = valorChar(resto);
-			continue;
-		}
-
+	// esse loop itera por cara algarismo da direita para a esquerda, adiciona
+	// seus resultados e coloca na posiçao correta na string resultado, considerando
+	// o resto
+	for (int i = 0; i < tamanhoMaximo; i++) {
 		algarismo1 = valorNumerico(valor1[tamanho1 - 1 - i]);
-		algarismo2 = valorNumerico(valor2[tamanho1 - 1 - i]);
+		algarismo2 = valorNumerico(valor2[tamanho2 - 1 - i]);
 
 		numeroAtual = algarismo1 + algarismo2 + resto;
+		resto = 0;
 		if (numeroAtual > 15) {
 			resto = (algarismo1 + algarismo2 + resto) / 15;
-			numeroAtual -= resto / 10;
+			numeroAtual -= resto * 16;
 		}
 
-		resultado[tamanhoMaximo - 1 - i] = valorChar(numeroAtual);
+		resultado[tamanhoMaximo - i] = valorChar(numeroAtual);
 	}
 
-	printf("%s\n", resultado);
+	// essa parte adiciona os caracteres necessários para a string em c
+	resultado[tamanhoMaximo + 1] = '\0';
+	if (resto != 0) {
+		resultado[0] = valorChar(resto);
+	}
+	else {
+		resultado[0] = '\b'; // o '\b' é backspace. só precisava de qualquer caractere q o printf não lê
+	}
+
+	printf("Resultado: %s\n", resultado);
 }
-// estou com problemas para fazer o último algarismo funcionar e para fazer os números serem colocados no resultado na ordem certa
+/*-------------------------------------------------
+* Fim das funções de calculadora
+-------------------------------------------------*/
 
-// Fim das funções de calculadora
-
-/* 
+/*-------------------------------------------------
 * Início das funções globais
-*/
+-------------------------------------------------*/
 
-// Max: recebe dois números inteiros e retorna o maior dentre eles.
+// max: recebe dois números inteiros e retorna o maior dentre eles.
 int max(int num1, int num2) {
 	if (num1 >= num2) {
 		return num1;
@@ -253,14 +256,15 @@ int max(int num1, int num2) {
 	}
 }
 
-// valorNumerico: recebe um charactere e retorna seu valor numérico de acordo com a tabela ascii
+// valorNumerico: recebe um caractere e retorna seu valor numérico de acordo com a tabela ascii
 int valorNumerico (char valor) {
 	if (valor >= 'A' && valor <= 'F') {
 			return valor - 55;
 	}
-	else {
+	else if (valor >= '0' && valor <= '9') {
 		return valor - '0';
 	}
+	return 0;
 }
 
 // valorChar: recebe um charactere e retorna seu formato em char, convertendo os números para letras
@@ -273,4 +277,6 @@ char valorChar (int valor) {
 	}
 }
 
-// Fim das funções globais
+/*-------------------------------------------------
+* Fim das funções globais
+-------------------------------------------------*/
