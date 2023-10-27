@@ -5,7 +5,8 @@
 * Início da declaração prévia das variáveis
 -------------------------------------------------*/
 
-void calculadoraHexaAdicao(char *valor1, char *valor2);
+char *calculadoraHexaAdicao(char *valor1, char *valor2);
+void calculadoraHexaMulti(char *valor1, char *valor2);
 
 int max(int, int);
 int valorNumerico(char valor);
@@ -72,7 +73,7 @@ int main() {
 
 					switch (baseCalculadora) {
 					case 16:
-						calculadoraHexaAdicao(entradaCalculo1, entradaCalculo2);
+						printf("O resultado é: %s\n", calculadoraHexaAdicao(entradaCalculo1, entradaCalculo2));
 						break;
 					
 					default:
@@ -200,13 +201,11 @@ int main() {
 -------------------------------------------------*/
 
 // calculadoraHexaAdicao: recebe duas strings de números hexadecimais com letras maiúsculas, soma os números e printa o resultado
-void calculadoraHexaAdicao(char *valor1, char *valor2) {
-	int tamanho1 = strlen(valor1);
-	int tamanho2 = strlen(valor2);
+char *calculadoraHexaAdicao(char *valor1, char *valor2) {
 	int algarismo1, algarismo2, numeroAtual;
 	int resto = 0;
 
-	int tamanhoMaximo = max(tamanho1, tamanho2);
+	int tamanhoMaximo = max(strlen(valor1), strlen(valor2));
 
 	char resultado[tamanhoMaximo + 2];
 	
@@ -214,13 +213,13 @@ void calculadoraHexaAdicao(char *valor1, char *valor2) {
 	// seus resultados e coloca na posiçao correta na string resultado, considerando
 	// o resto
 	for (int i = 0; i < tamanhoMaximo; i++) {
-		algarismo1 = valorNumerico(valor1[tamanho1 - 1 - i]);
-		algarismo2 = valorNumerico(valor2[tamanho2 - 1 - i]);
+		algarismo1 = valorNumerico(valor1[strlen(valor1) - 1 - i]);
+		algarismo2 = valorNumerico(valor2[strlen(valor2) - 1 - i]);
 
 		numeroAtual = algarismo1 + algarismo2 + resto;
 		resto = 0;
 		if (numeroAtual > 15) {
-			resto = (algarismo1 + algarismo2 + resto) / 15;
+			resto = numeroAtual / 15;
 			numeroAtual -= resto * 16;
 		}
 
@@ -236,8 +235,35 @@ void calculadoraHexaAdicao(char *valor1, char *valor2) {
 		resultado[0] = '\b'; // o '\b' é backspace. só precisava de qualquer caractere q o printf não lê
 	}
 
-	printf("Resultado: %s\n", resultado);
+	return resultado;
 }
+
+// calculadoraHexaMulti: recebe duas strings de números hexadecimais com letras maiúsculas e printa o resultado
+void calculadoraHexaMulti(char *valor1, char *valor2) {
+	int algarismo1, algarismo2, numeroAtual;
+	int resto = 0;
+	
+	char temp[strlen(valor1) + 2];
+	char resultado[strlen(valor1) + strlen(valor2) + 3];
+	
+	for (int i = 0; i < strlen(valor2); i++) {
+		algarismo2 = valorNumerico(valor2[strlen(valor2) - 1 - i]);
+
+		for (int j = 0; j < strlen(valor1); j++) {
+			algarismo1 = valorNumerico(valor1[strlen(valor1) - 1 - i]);
+
+			numeroAtual = algarismo1 + algarismo2 + resto;
+			resto = 0;
+			if (numeroAtual > 15) {
+				resto = numeroAtual / 15;
+				numeroAtual -= resto * 16;
+			}
+
+			temp[strlen(resultado) - 1 - i] = valorChar(numeroAtual);
+		}
+	}
+}
+
 /*-------------------------------------------------
 * Fim das funções de calculadora
 -------------------------------------------------*/
@@ -249,6 +275,16 @@ void calculadoraHexaAdicao(char *valor1, char *valor2) {
 // max: recebe dois números inteiros e retorna o maior dentre eles.
 int max(int num1, int num2) {
 	if (num1 >= num2) {
+		return num1;
+	}
+	else {
+		return num2;
+	}
+}
+
+// min: recebe dois números inteiros e retorna o menor dentre eles
+int min(int num1, int num2) {
+	if (num1 <= num2) {
 		return num1;
 	}
 	else {
