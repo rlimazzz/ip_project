@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <math.h>
 
-int adiçaooctal () {
-    return 1;
-}
 
 
 //transformador de números para caracteres ----> usar em todos os conversores hexadecimais
@@ -383,11 +380,52 @@ long long int hexaOCTAL(char Hexa[])
 
 }
 
-
+int calculadoraOctalAdicao(int num1, int num2) {
+    num1 = (long long int)num1;
+    num2 = (long long int)num2;
+    
+    long long int dec1 = octalldECIMAL(num1);
+    long long int dec2 = octalldECIMAL(num2);
+    long long int resDecimal=dec1 + dec2;
+    long long int resOctal= decimalOCTAL(resDecimal);
+    return (int)resOctal;
+}
+int calculadoraOctalSubtracao(int num1, int num2){
+    num1 = (long long int)num1;
+    num2 = (long long int)num2;
+    
+    long long int dec1 = octalldECIMAL(num1);
+    long long int dec2 = octalldECIMAL(num2);
+    long long int resDecimal=dec1 - dec2;
+    long long int resOctal= decimalOCTAL(resDecimal);
+    return (int)resOctal;
+}
+int calculadoraOctalMultiplicacao (int num1, int num2){
+    num1 = (long long int)num1;
+    num2 = (long long int)num2;
+    
+    long long int dec1 = octalldECIMAL(num1);
+    long long int dec2 = octalldECIMAL(num2);
+    long long int resDecimal=dec1 * dec2;
+    long long int resOctal= decimalOCTAL(resDecimal);
+    return (int)resOctal;
+}
+int calculadoraOctalDivisao(int num1, int num2){
+        num1 = (long long int)num1;
+    num2 = (long long int)num2;
+    
+    long long int dec1 = octalldECIMAL(num1);
+    long long int dec2 = octalldECIMAL(num2);
+    long long int resDecimal=dec1 / dec2;
+    long long int resOctal= decimalOCTAL(resDecimal);
+    return (int)resOctal;
+}
 
 int main() {
-	int baseConversor, baseCalculadora, converter, contador = 0, opcao, entradaCalculo1, entradaCalculo2, operacao;
+	int baseConversor, baseCalculadora, converter, contador = 0, opcao, operacao;
 	//Loop infinito para converter quantas vezes o usúario do programa quiser, ele vai ser finalizado quando o contador ser igual a 1
+    long long int entradaCalculo1, entradaCalculo2;
+
 	while(contador == 0) {
          long long int decimal;
          long long int binario;
@@ -424,7 +462,7 @@ int main() {
 			printf(">>ENTRADA : BASE, PRIMEIRO NUMERO, SEGUNDO NUMERO\n");
 
 			printf("$");
-			scanf("%d %d %d", &baseCalculadora, &entradaCalculo1, &entradaCalculo2);
+			scanf("%d %lld %lld", &baseCalculadora, &entradaCalculo1, &entradaCalculo2);
 			printf("\n");
 
 			printf(">>1 - SOMA\n");
@@ -445,6 +483,9 @@ int main() {
 					printf("--------------------------------------------\n");
 					printf("          	SOMA\n");
 					printf("--------------------------------------------\n\n");
+
+                    printf("O resultado é: %d", calculadoraOctalAdicao(entradaCalculo1, entradaCalculo2));
+
 					break;
 
 				case 2:
@@ -452,6 +493,7 @@ int main() {
 					printf("--------------------------------------------\n");
 					printf("          		SUBTRAÇÃO\n");
 					printf("--------------------------------------------\n\n");
+                    printf("O resultado é: %d", calculadoraOctalSubtracao(entradaCalculo1, entradaCalculo2));
 					break;
 
 				case 3:
@@ -459,6 +501,7 @@ int main() {
 					printf("--------------------------------------------\n");
 					printf("          	  MULTIPLICAÇÃO\n");
 					printf("--------------------------------------------\n\n");
+                    printf("O resultado é: %d", calculadoraOctalMultiplicacao(entradaCalculo1, entradaCalculo2));
 					break;
 
 				case 4:
@@ -466,6 +509,7 @@ int main() {
 					printf("--------------------------------------------\n");
 					printf("          		DIVISÃO\n");
 					printf("--------------------------------------------\n\n");
+                    printf("O resultado é: %d", calculadoraOctalDivisao(entradaCalculo1, entradaCalculo2));
 					break;
 
 				case 5:
@@ -473,7 +517,7 @@ int main() {
 					//agradecimentos finais do código
 					printf(">>Obrigado por usar nosso conversor de medidas! \nFeito pelos alunos:\n");
 					printf(">>Ryan Gabryel\n");
-					printf(">>Luiz Renato\n");
+					printf(">>Luis Renato\n");
 					printf(">>Rafael Mattos\n");
 					printf(">>Felipe S\n");
 					//contador = 1, para sair do while true, já que 5 é o caso de saída
@@ -795,7 +839,7 @@ int main() {
 		else if(opcao == 3) {
 					printf("\n\n>>Obrigado por usar nosso conversor de medidas! \nFeito pelos alunos:\n");
 					printf(">>Ryan Gabryel\n");
-					printf(">>Luiz Renato\n");
+					printf(">>Luis Renato\n");
 					printf(">>Rafael Mattos\n");
 					printf(">>Felipe S\n");
 					contador++;
