@@ -1,8 +1,25 @@
 #include <stdio.h>
+#include <string.h>
 #include <math.h>
+
+/*-------------------------------------------------
+* Início da declaração prévia das variáveis
+-------------------------------------------------*/
+
+void calculadoraHexaAdicao(char *valor1, char *valor2);
+void calculadoraHexaMulti(char *valor1, char *valor2);
+
+int max(int, int);
+int valorNumerico(char valor);
+char valorChar(int valor);
+
+/*-------------------------------------------------
+*Fim da declaração prévia das variáveis
+-------------------------------------------------*/
 
 int main() {
 	int baseConversor, baseCalculadora, converter, contador = 0, opcao, entradaCalculo1, entradaCalculo2, operacao;
+    char entradaHexa1[20], entradaHexa2[20];
 	//Loop infinito para converter quantas vezes o usúario do programa quiser, ele vai ser finalizado quando o contador ser igual a 1
 	while(contador == 0) {
          long long int decimal;
@@ -37,10 +54,10 @@ int main() {
 			printf("|   7   |   8   |   9   |*|$|\n");
 			printf("------------------------\n\n");
 
-			printf(">>ENTRADA : BASE, PRIMEIRO NUMERO, SEGUNDO NUMERO\n");
+			printf(">>DIGITE O NÚMERO DA BASE QUE DESEJA CALCULAR\n");
 
 			printf("$");
-			scanf("%d %d %d", &baseCalculadora, &entradaCalculo1, &entradaCalculo2);
+			scanf("%d", &baseCalculadora);
 			printf("\n");
 
 			printf(">>1 - SOMA\n");
@@ -54,371 +71,203 @@ int main() {
 			scanf("%d", &operacao);
 			printf("\n");
 
-			switch(operacao) {
+			switch (baseCalculadora) {
+                case 16:
+                    printf(">>DIGITE OS NÚMEROS QUE DESEJA CALCULAR COM LETRAS MAIÚSCULAS\n");
+                    scanf("%s %s", &entradaHexa1, &entradaHexa2);
 
-				case 1:
+                    switch(operacao) {
+                        case 1:
 
-					printf("--------------------------------------------\n");
-					printf("          	SOMA\n");
-					printf("--------------------------------------------\n\n");
-					break;
+                            printf("--------------------------------------------\n");
+                            printf("          	SOMA\n");
+                            printf("--------------------------------------------\n\n");
 
-				case 2:
+                            calculadoraHexaAdicao(entradaHexa1, entradaHexa2);
 
-					printf("--------------------------------------------\n");
-					printf("          		SUBTRAÇÃO\n");
-					printf("--------------------------------------------\n\n");
-					break;
+                            break;
 
-				case 3:
+                        case 2:
 
-					printf("--------------------------------------------\n");
-					printf("          	  MULTIPLICAÇÃO\n");
-					printf("--------------------------------------------\n\n");
-					break;
+                            printf("--------------------------------------------\n");
+                            printf("          		SUBTRAÇÃO\n");
+                            printf("--------------------------------------------\n\n");
+                            break;
 
-				case 4:
+                        case 3:
 
-					printf("--------------------------------------------\n");
-					printf("          		DIVISÃO\n");
-					printf("--------------------------------------------\n\n");
-					break;
+                            printf("--------------------------------------------\n");
+                            printf("          	  MULTIPLICAÇÃO\n");
+                            printf("--------------------------------------------\n\n");
+                            break;
 
-				case 5:
+                        case 4:
 
-					//agradecimentos finais do código
-					printf(">>Obrigado por usar nosso conversor de medidas! \nFeito pelos alunos:\n");
-					printf(">>Ryan Gabryel\n");
-					printf(">>Luiz Renato\n");
-					printf(">>Rafael Mattos\n");
-					printf(">>Felipe S\n");
-					//contador = 1, para sair do while true, já que 5 é o caso de saída
-					contador++;
-					break;
-			}
+                            printf("--------------------------------------------\n");
+                            printf("          		DIVISÃO\n");
+                            printf("--------------------------------------------\n\n");
+                            break;
 
-		}
-		else if(opcao == 2) 
-		//
-		{
-				char Hexa[50];
-				int i, BASE = 0, BASE2 = 0;
-				long long int tamanho;
+                        case 5:
+                            //agradecimentos finais do código
+                            printf(">>Obrigado por usar nosso conversor de medidas! \nFeito pelos alunos:\n");
+                            printf(">>Ryan Gabryel\n");
+                            printf(">>Luiz Renato\n");
+                            printf(">>Rafael Mattos\n");
+                            printf(">>Felipe S\n");
+                            //contador = 1, para sair do while true, já que 5 é o caso de saída
+                            contador++;
+                            break;
+                    }
+                    break;
+                default:
+                    switch(operacao) {
+                        case 1:
 
+                            printf("--------------------------------------------\n");
+                            printf("          	SOMA\n");
+                            printf("--------------------------------------------\n\n");
+                            break;
 
-				
-				printf("--------------------------------------------\n");
-				printf("	      CONVERSOR 2000               \n");
-				printf("--------------------------------------------\n\n");
+                        case 2:
 
-				printf("--------------------------------------------\n");
-				printf("          CONVERSOES SUPORTADAS\n");
-				printf("--------------------------------------------\n\n");
-				printf(">>Selecione a base que deseja converter\n");
-				printf(">> [2] - BINARIO\n");
-				printf(">> [8] - OCTAL\n");
-				printf(">> [10] - DECIMAL\n");
-				printf(">> [16] - HEXADECIMAL\n");
-				printf("\n~ ");
-				scanf("%d", &BASE);
-                if(BASE != 2 && BASE != 8 && BASE != 10 && BASE != 16)
-                {
-                    printf("ERRO: selecione um sistema númerico válido\n");
-                    contador++;
-                    return 0;
-                }
+                            printf("--------------------------------------------\n");
+                            printf("          		SUBTRAÇÃO\n");
+                            printf("--------------------------------------------\n\n");
+                            break;
 
-				//recebo a entrada que vou converter
-				printf("\n>>Qual o número que deseja converter? \n");
-				printf("~ ");
+                        case 3:
 
-                int funcionaporfavor = 0;
-				if(BASE == 16)
-				{
-					scanf("%s", Hexa);
-				}
-				else if(BASE == 2)
-				{
-                    int j = 0;
-					scanf("%lld", &entrada);
-                    binario = entrada;
-                    do
-                    {
-                        j = (entrada % 10);
-                        if(j > 1 || j < 0)
-                        {
-                            printf("ERRO: digite um número binário válido!\n");  
-                            funcionaporfavor++;
-                            return 0;
+                            printf("--------------------------------------------\n");
+                            printf("          	  MULTIPLICAÇÃO\n");
+                            printf("--------------------------------------------\n\n");
+                            break;
 
-                        }
-                        entrada /= 10;
-                    }while(entrada > 0);
-				}
-                else if(BASE == 8)
-				{
-                    int j = 0;
-					scanf("%lld", &entrada);
-                    octal = entrada;
-                    do
-                    {
-                        j = (entrada % 10);
-                        if(j == 8 || j == 9)
-                        {
-                            printf("ERRO: digite um número octal válido!\n");
-                            funcionaporfavor++;
-                            return 0;
-                        }
-                        entrada /= 10;
-                    }while(entrada > 0);
-				}
-                else
-                {
-                    scanf("%lld", &entrada);
-                    decimal = entrada;
-					hexa = entrada;
-                }
+                        case 4:
 
-				
-				printf("\n");
+                            printf("--------------------------------------------\n");
+                            printf("          		DIVISÃO\n");
+                            printf("--------------------------------------------\n\n");
+                            break;
 
-				//construi o codigo baseado em suas proprias variaveis.
+                        case 5:
 
-
-				printf(">>Selecione a base desejada para a conversão.\n");
-					switch(BASE)
-					{
-						case 2:
-							printf(">> [8] - OCTAL\n");
-							printf(">> [10] - DECIMAL\n");
-							printf(">> [16] - HEXADECIMAL\n");
-							printf("\n~ ");
-							scanf("%d", &BASE2);
-							break;
-
-						case 8:
-							printf(">> [2] - BINARIO\n");
-							printf(">> [10] - DECIMAL\n");
-							printf(">> [16] - HEXADECIMAL\n");
-							printf("\n~ ");
-							scanf("%d", &BASE2);
-						break;
-
-						case 10:
-							printf(">> [2] - BINARIO\n");
-							printf(">> [8] - OCTAL\n");
-							printf(">> [16] - HEXADECIMAL\n");
-							printf("\n~ ");
-							scanf("%d", &BASE2);
-							break;
-
-						case 16:
-							printf(">> [2] - BINARIO\n");
-							printf(">> [8] - OCTAL\n");
-							printf(">> [10] - DECIMAL\n");
-							printf("\n~ ");
-							scanf("%d", &BASE2);
-							break;
-
-						default:
-						return 0;
-					}
-
-                if(BASE2 != 2 && BASE2 != 8 && BASE2 != 10 && BASE2 != 16)
-                {
-                    printf("ERRO: selecione um sistema númerico válido!\n");
-                    contador++;
-                    return 0;
-                }
-               
-
-				//a opção é basicamente o número que eu tenho e vou converter ele para binario, octal e hexadecimal;
-				switch (BASE)
-				 {
-					//binario para N
-					case 2:
-						printf("--------------------------------------------\n");
-						printf("	     BINARIO");
-						switch (BASE2)
-						{
-							case 8:
-						printf(" - OCTAL\n");
-						printf("--------------------------------------------\n\n");
-						printf("CONVERSÂO:\n");
-								// Caso para BASE = 2 e BASE2 = 8
-								octal = binarioOCTAL(binario);
-				   				printf("%lld(2) = %lld(8)\n", binario, octal);
-								break;
-							case 10:
-						printf(" - DECIMAL\n");
-						printf("--------------------------------------------\n\n");
-						printf("CONVERSÂO:\n");
-								// Caso para BASE = 2 e BASE2 = 10
-								decimal = binarioDECIMAL(binario);
-				   				printf("%lld(2) = %lld(10)\n", binario, decimal);
-								break;
-							case 16:
-						printf(" - HEXADECIMAL\n");
-						printf("--------------------------------------------\n\n");
-						printf("CONVERSÂO:\n");
-								// Caso para BASE = 2 e BASE2 = 16
-								tamanho = binarioHEXA(octal, Hexa);
-
-								printf("%lld(8) = ", binario);
-								for(i = 0; i < tamanho; i++)
-				   				 {
-					   				 printf("%c", Hexa[i]);
-				   				 }
-								printf("(16)\n");
-								break;
-						}
-						break;
-					//octal para N
-				case 8:
-					printf("--------------------------------------------\n");
-					printf("	     OCTAL");
-					switch (BASE2)
-						{
-							case 2:
-								printf(" - BINARIO\n");
-								printf("--------------------------------------------\n");
-								printf("CONVERSÂO:\n");
-								// Caso para BASE = 8 e BASE2 = 2
-								binario = octalBINARIO(octal);
-				   				printf("%lld(8) = %lld(2)\n", octal, binario);
-								break;
-							case 10:
-								printf(" - DECIMAL\n");
-								printf("--------------------------------------------\n");
-								printf("CONVERSÂO:\n");
-								// Caso para BASE = 8 e BASE2 = 10
-								decimal = octalldECIMAL(octal);
-				   				printf("%lld(8) = %lld(10)\n", octal, decimal);
-								break;
-							case 16:
-								printf(" - HEXADECIMAL\n");
-								printf("--------------------------------------------\n");
-								printf("CONVERSÂO:\n");
-											// Caso para BASE = 8 e BASE2 = 16
-											tamanho = octalHEXA(octal, Hexa);
-
-											printf("%lld(8) = ", octal);
-											for(i = 0; i < tamanho; i++)
-							   				 {
-								   				 printf("%c", Hexa[i]);
-							   				 }
-											printf("(16)\n");
-											break;
-									}
-									break;
-
-					//decimal para N
-					case 10:
-						printf("--------------------------------------------\n");
-						printf("	     DECIMAL");
-						switch (BASE2)
-						{
-							case 2:
-								printf(" - BINARIO\n");
-								printf("--------------------------------------------\n");
-								printf("CONVERSÂO:\n");
-								// Caso para BASE = 10 e BASE2 = 2
-								binario = decimalBINARIO(decimal);
-							   	printf("%lld(10) = %lld(2)\n", decimal, binario);
-								break;
-							case 8:
-								printf(" - OCTAL\n");
-								printf("--------------------------------------------\n");
-								printf("CONVERSÂO:\n");
-								// Caso para BASE = 10 e BASE2 = 8
-								octal = decimalOCTAL(decimal);
-				   				printf("%lld(10) = %lld(8)\n", decimal, octal);
-								break;
-							case 16:
-								printf(" - HEXADECIMAL\n");
-								printf("--------------------------------------------\n");
-								printf("CONVERSÂO:\n");
-								// Caso para BASE = 10 e BASE2 = 16
-								tamanho = decimalHEXADECIMAL(decimal, Hexa);
-								printf("%lld(10) = ", decimal);
-
-								for(i = 0; i < tamanho; i++)
-						   		{
-							   		printf("%c", Hexa[i]);
-						   		}
-								printf("(16)\n");
-								break;
-								}
-					 break;
-
-					//hexadecimal para N
-					case 16:
-					printf("--------------------------------------------\n");
-					printf("	   HEXADECIMAL");
-						switch (BASE2)
-						{
-							case 2:
-								printf(" - BINARIO\n");
-								printf("--------------------------------------------\n");
-								printf("CONVERSÂO:\n");
-								// Caso para BASE = 16 e BASE2 = 2
-
-				   				binario = hexaBINARIO(Hexa);
-								printf("%s(16) = %lld(2)\n", Hexa, binario);
-								break;
-							case 8:
-								printf(" - OCTAL\n");
-								printf("--------------------------------------------\n");
-								printf("CONVERSÂO:\n");
-											// Caso para BASE = 16 e BASE2 = 8
-
-				   				octal = hexaOCTAL(Hexa);
-								printf("%s(16) = %lld(8)\n", Hexa, octal);
-								break;
-							case 10:
-								printf(" - DECIMAL\n");
-								printf("--------------------------------------------\n");
-								printf("CONVERSÂO:\n");
-											// Caso para BASE = 16 e BASE2 = 10
-
-				   				decimal = hexaDECIMAL(Hexa);
-								printf("%s(16) = %lld(10)\n", Hexa, decimal);
-								break;
-						}
-							 }
-
-                             char g;
-                             printf("\n\nContinuar?\n [Y]:\n [N]:\n\n ~");
-                             getchar();
-                                    scanf(" %c", &g);
-                                    if(g == 'Y' || g == 'y')
-                                    {
-                                        continue;
-                                    }
-                                    else if(g == 'N' || 'n')
-                                    {
-                                        contador++;
-                                    }
-                                    else
-                                    {
-                                        return 0;
-                                    }
-                             
-                   
-
-						}
-
-		else if(opcao == 3) {
+                            //agradecimentos finais do código
+                            printf(">>Obrigado por usar nosso conversor de medidas! \nFeito pelos alunos:\n");
+                            printf(">>Ryan Gabryel\n");
+                            printf(">>Luiz Renato\n");
+                            printf(">>Rafael Mattos\n");
+                            printf(">>Felipe S\n");
+                            //contador = 1, para sair do while true, já que 5 é o caso de saída
+                            contador++;
+                            break;
+                    }
+                    break;
+            }
+		} else if(opcao == 3) {
 					printf("\n\n>>Obrigado por usar nosso conversor de medidas! \nFeito pelos alunos:\n");
 					printf(">>Ryan Gabryel\n");
 					printf(">>Luiz Renato\n");
 					printf(">>Rafael Mattos\n");
 					printf(">>Felipe S\n");
 					contador++;
-			}
 		}
-
 	}
 
+    return 0;
+}
 
+/*-------------------------------------------------
+* Início das funções de calculadora
+-------------------------------------------------*/
 
+// calculadoraHexaAdicao: recebe duas strings de números hexadecimais com letras maiúsculas, soma os números e printa o resultado
+void calculadoraHexaAdicao(char *valor1, char *valor2) {
+	int algarismo1, algarismo2, numeroAtual;
+	int resto = 0;
+
+	int tamanhoMaximo = max(strlen(valor1), strlen(valor2));
+
+	char resultado[tamanhoMaximo + 2];
+	
+	// esse loop itera por cara algarismo da direita para a esquerda, adiciona
+	// seus resultados e coloca na posiçao correta na string resultado, considerando
+	// o resto
+	for (int i = 0; i < tamanhoMaximo; i++) {
+		algarismo1 = valorNumerico(valor1[strlen(valor1) - 1 - i]);
+		algarismo2 = valorNumerico(valor2[strlen(valor2) - 1 - i]);
+
+		numeroAtual = algarismo1 + algarismo2 + resto;
+		resto = 0;
+		if (numeroAtual > 15) {
+			resto = numeroAtual / 15;
+			numeroAtual -= resto * 16;
+		}
+
+		resultado[tamanhoMaximo - i] = valorChar(numeroAtual);
+	}
+
+	// essa parte adiciona os caracteres necessários para a string em c
+	resultado[tamanhoMaximo + 1] = '\0';
+	if (resto != 0) {
+		resultado[0] = valorChar(resto);
+	}
+	else {
+		resultado[0] = '\b'; // o '\b' é backspace. só precisava de qualquer caractere q o printf não lê
+	}
+
+    printf("O resultado é: %s", resultado);
+}
+
+/*-------------------------------------------------
+* Fim das funções de calculadora
+-------------------------------------------------*/
+
+/*-------------------------------------------------
+* Início das funções globais
+-------------------------------------------------*/
+
+// max: recebe dois números inteiros e retorna o maior dentre eles.
+int max(int num1, int num2) {
+	if (num1 >= num2) {
+		return num1;
+	}
+	else {
+		return num2;
+	}
+}
+
+// min: recebe dois números inteiros e retorna o menor dentre eles
+int min(int num1, int num2) {
+	if (num1 <= num2) {
+		return num1;
+	}
+	else {
+		return num2;
+	}
+}
+
+// valorNumerico: recebe um caractere e retorna seu valor numérico de acordo com a tabela ascii
+int valorNumerico (char valor) {
+	if (valor >= 'A' && valor <= 'F') {
+			return valor - 55;
+	}
+	else if (valor >= '0' && valor <= '9') {
+		return valor - '0';
+	}
+	return 0;
+}
+
+// valorChar: recebe um charactere e retorna seu formato em char, convertendo os números para letras
+char valorChar (int valor) {
+	if (valor > 9) {
+		return valor + 55;
+	}
+	else {
+		return valor + '0';
+	}
+}
+
+/*-------------------------------------------------
+* Fim das funções globais
+-------------------------------------------------*/
