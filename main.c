@@ -3,23 +3,25 @@
 #include <math.h>
 
 /*-------------------------------------------------
-* Início da declaração prévia das variáveis
+* Início da declaração prévia das funções
 -------------------------------------------------*/
 
 void calculadoraHexaAdicao(char *valor1, char *valor2);
+void calculadoraHexaSub(char *valor1, char *valor2);
 void calculadoraHexaMulti(char *valor1, char *valor2);
+void calculadoraHexaDiv(char *valor1, char *valor2);
 
 int max(int, int);
 int valorNumerico(char valor);
 char valorChar(int valor);
 
 /*-------------------------------------------------
-*Fim da declaração prévia das variáveis
+*Fim da declaração prévia das funções
 -------------------------------------------------*/
 
 //transformador de números para caracteres ----> usar em todos os conversores hexadecimais
 char numeroEMCHAR(long long int numero)
- {
+{
     if (numero >= 0 && numero <= 9)
     {
         return (char)(numero + '0');
@@ -33,8 +35,8 @@ char numeroEMCHAR(long long int numero)
 
 }
 
- //decimal PARA binário ----> divisão do número decimal por 2, atribuição do resto para o número binário final.
- //sem erros -- adicionar casos de restrição
+//decimal PARA binário ----> divisão do número decimal por 2, atribuição do resto para o número binário final.
+//sem erros -- adicionar casos de restrição
 long long int decimalBINARIO(long long int decimal)
 {
     long long int binario = 0, base = 1;
@@ -50,7 +52,7 @@ long long int decimalBINARIO(long long int decimal)
         return binario;
 }
 
- //decimal PARA octal ----> divisão do número decimal por 8, atribuição do inverso do resto para o número octal final.
+//decimal PARA octal ----> divisão do número decimal por 8, atribuição do inverso do resto para o número octal final.
 //sem erros ---- adicionar casos de restrição
 long long int decimalOCTAL(long long int decimal)
 {
@@ -91,6 +93,7 @@ long long int decimalHEXADECIMAL(long long int decimal, char hexa[])
         i++;
         decimal /= 16;
     }
+    hexa[i] = "\0";
 
     int esquerda = 0;
     int direita = i - 1;
@@ -103,7 +106,7 @@ long long int decimalHEXADECIMAL(long long int decimal, char hexa[])
         direita--;
     }
 
-  return i;
+return i;
 
 }
 
@@ -181,8 +184,8 @@ long long int binarioHEXA(long long int binario, char Hexa[])
     int bit, base;
     char charHEXA;
 
-     while(binario > 0)
-     {
+    while(binario > 0)
+    {
             bit = binario % 10000;
             numeroDECIMAL = 0;
             base = 1;
@@ -200,7 +203,7 @@ long long int binarioHEXA(long long int binario, char Hexa[])
         i++;
 
         binario /= 10000;
-      }
+    }
 
     int esquerda = 0;
     int direita = i - 1;
@@ -310,7 +313,7 @@ long long int octalHEXA(long long int octal, char Hexa[])
 long long int charEMNUMERO(char Hexa)
 {
     if (Hexa >= '0' && Hexa <= '9')
-     {
+    {
         return (char)(Hexa - '0');
     } else if (Hexa >= 'A' && Hexa <= 'F')
     {
@@ -397,60 +400,60 @@ long long int hexaOCTAL(char Hexa[])
 
 
 int main() {
-	int baseConversor, baseCalculadora, converter, contador = 0, opcao, entradaCalculo1, entradaCalculo2, operacao;
+    int baseConversor, baseCalculadora, converter, contador = 0, opcao, entradaCalculo1, entradaCalculo2, operacao;
     char entradaHexa1[20], entradaHexa2[20];
-	//Loop infinito para converter quantas vezes o usúario do programa quiser, ele vai ser finalizado quando o contador ser igual a 1
-	while(contador == 0) {
-         long long int decimal;
-         long long int binario;
-         long long int octal;
-         long long hexa;
-         long long int entrada = 0;
+    //Loop infinito para converter quantas vezes o usúario do programa quiser, ele vai ser finalizado quando o contador ser igual a 1
+    while(contador == 0) {
+        long long int decimal;
+        long long int binario;
+        long long int octal;
+        long long hexa;
+        long long int entrada = 0;
 
-		printf("\n\n");
-		printf("--------------------------------------------\n");
-		printf("          QUAL OPÇÃO VOCÊ DESEJA\n");
-		printf("--------------------------------------------\n\n");
+        printf("\n\n");
+        printf("--------------------------------------------\n");
+        printf("          QUAL OPÇÃO VOCÊ DESEJA\n");
+        printf("--------------------------------------------\n\n");
 
-		printf(">> [1] - CALCULADORA 2000\n");
-		printf(">> [2] - CONVERSOR 2000\n");
-		printf(">> [3] - SAIR\n");
+        printf(">> [1] - CALCULADORA 2000\n");
+        printf(">> [2] - CONVERSOR 2000\n");
+        printf(">> [3] - SAIR\n");
 
-		printf("\n~ ");
-		scanf("%d", &opcao);
-		printf("\n");
+        printf("\n~ ");
+        scanf("%d", &opcao);
+        printf("\n");
 
-		if(opcao == 1){
-			printf("--------------------------------------------\n");
-			printf("          CALCULADORA 2000\n");
-			printf("--------------------------------------------\n\n");
+        if(opcao == 1){
+            printf("--------------------------------------------\n");
+            printf("          CALCULADORA 2000\n");
+            printf("--------------------------------------------\n\n");
 
-			printf("------------------------\n");
-			printf("|      MADE IN INF     |\n");
-			printf("------------------------\n");
-			printf("|   1   |   2   |   3   |+|/|\n");
-			printf("|   4   |   5   |   6   |-|\n");
-			printf("|   7   |   8   |   9   |*|$|\n");
-			printf("------------------------\n\n");
+            printf("------------------------\n");
+            printf("|      MADE IN INF     |\n");
+            printf("------------------------\n");
+            printf("|   1   |   2   |   3   |+|/|\n");
+            printf("|   4   |   5   |   6   |-|\n");
+            printf("|   7   |   8   |   9   |*|$|\n");
+            printf("------------------------\n\n");
 
-			printf(">>DIGITE O NÚMERO DA BASE QUE DESEJA CALCULAR\n");
+            printf(">>DIGITE O NÚMERO DA BASE QUE DESEJA CALCULAR\n");
 
-			printf("$");
-			scanf("%d", &baseCalculadora);
-			printf("\n");
+            printf("$");
+            scanf("%d", &baseCalculadora);
+            printf("\n");
 
-			printf(">>1 - SOMA\n");
-			printf(">>2 - SUBTRAÇÃO\n");
-			printf(">>3 - MULTIPLICAÇÃO\n");
-			printf(">>4 - DIVISÃO\n");
-			printf(">>5 - SAIR\n\n");
+            printf(">>1 - SOMA\n");
+            printf(">>2 - SUBTRAÇÃO\n");
+            printf(">>3 - MULTIPLICAÇÃO\n");
+            printf(">>4 - DIVISÃO\n");
+            printf(">>5 - SAIR\n\n");
 
-			printf("QUAL OPERAÇÃO VOCÊ DESEJA?\n");
-			printf("$");
-			scanf("%d", &operacao);
-			printf("\n");
+            printf("QUAL OPERAÇÃO VOCÊ DESEJA?\n");
+            printf("$");
+            scanf("%d", &operacao);
+            printf("\n");
 
-			switch (baseCalculadora) {
+            switch (baseCalculadora) {
                 case 16:
                     printf(">>DIGITE OS NÚMEROS QUE DESEJA CALCULAR COM LETRAS MAIÚSCULAS\n");
                     scanf("%s %s", &entradaHexa1, &entradaHexa2);
@@ -471,6 +474,9 @@ int main() {
                             printf("--------------------------------------------\n");
                             printf("          		SUBTRAÇÃO\n");
                             printf("--------------------------------------------\n\n");
+
+                            calculadoraHexaSub(entradaHexa1, entradaHexa2);
+
                             break;
 
                         case 3:
@@ -478,6 +484,9 @@ int main() {
                             printf("--------------------------------------------\n");
                             printf("          	  MULTIPLICAÇÃO\n");
                             printf("--------------------------------------------\n\n");
+                            
+                            calculadoraHexaMulti(entradaHexa1, entradaHexa2);
+                            
                             break;
 
                         case 4:
@@ -485,6 +494,9 @@ int main() {
                             printf("--------------------------------------------\n");
                             printf("          		DIVISÃO\n");
                             printf("--------------------------------------------\n\n");
+                            
+                            calculadoraHexaDiv(entradaHexa1, entradaHexa2);
+                            
                             break;
 
                         case 5:
@@ -844,10 +856,10 @@ int main() {
                                 {
                                     return 0;
                                 }
-                             
-                   
+                            
+                
 
-		} else if(opcao == 3) {
+        } else if(opcao == 3) {
             printf("\n\n>>Obrigado por usar nosso conversor de medidas! \nFeito pelos alunos:\n");
             printf(">>Ryan Gabryel\n");
             printf(">>Luiz Renato\n");
@@ -855,8 +867,8 @@ int main() {
             printf(">>Felipe S\n");
             printf(">>Joao Pedro\n");
             contador++;
-		}
-	}
+        }
+    }
 
     return 0;
 }
@@ -867,40 +879,73 @@ int main() {
 
 // calculadoraHexaAdicao: recebe duas strings de números hexadecimais com letras maiúsculas, soma os números e printa o resultado
 void calculadoraHexaAdicao(char *valor1, char *valor2) {
-	int algarismo1, algarismo2, numeroAtual;
-	int resto = 0;
+    int algarismo1, algarismo2, numeroAtual;
+    int resto = 0;
 
-	int tamanhoMaximo = max(strlen(valor1), strlen(valor2));
+    int tamanhoMaximo = max(strlen(valor1), strlen(valor2));
 
-	char resultado[tamanhoMaximo + 2];
-	
-	// esse loop itera por cara algarismo da direita para a esquerda, adiciona
-	// seus resultados e coloca na posiçao correta na string resultado, considerando
-	// o resto
-	for (int i = 0; i < tamanhoMaximo; i++) {
-		algarismo1 = valorNumerico(valor1[strlen(valor1) - 1 - i]);
-		algarismo2 = valorNumerico(valor2[strlen(valor2) - 1 - i]);
+    char resultado[tamanhoMaximo + 2];
+    
+    // esse loop itera por cara algarismo da direita para a esquerda, adiciona
+    // seus resultados e coloca na posiçao correta na string resultado, considerando
+    // o resto
+    for (int i = 0; i < tamanhoMaximo; i++) {
+        algarismo1 = valorNumerico(valor1[strlen(valor1) - 1 - i]);
+        algarismo2 = valorNumerico(valor2[strlen(valor2) - 1 - i]);
 
-		numeroAtual = algarismo1 + algarismo2 + resto;
-		resto = 0;
-		if (numeroAtual > 15) {
-			resto = numeroAtual / 15;
-			numeroAtual -= resto * 16;
-		}
+        numeroAtual = algarismo1 + algarismo2 + resto;
+        resto = 0;
+        if (numeroAtual > 15) {
+            resto = numeroAtual / 15;
+            numeroAtual -= resto * 16;
+        }
 
-		resultado[tamanhoMaximo - i] = valorChar(numeroAtual);
-	}
+        resultado[tamanhoMaximo - i] = valorChar(numeroAtual);
+    }
 
-	// essa parte adiciona os caracteres necessários para a string em c
-	resultado[tamanhoMaximo + 1] = '\0';
-	if (resto != 0) {
-		resultado[0] = valorChar(resto);
-	}
-	else {
-		resultado[0] = '\b'; // o '\b' é backspace. só precisava de qualquer caractere q o printf não lê
-	}
+    // essa parte adiciona os caracteres necessários para a string em c
+    resultado[tamanhoMaximo + 1] = '\0';
+    if (resto != 0) {
+        resultado[0] = valorChar(resto);
+    }
+    else {
+        resultado[0] = '\b'; // o '\b' é backspace. só precisava de qualquer caractere q o printf não lê
+    }
 
-    printf("O resultado é: %s", resultado);
+    printf("RESULTADO: %s", resultado);
+}
+
+void calculadoraHexaSub(char *valor1, char *valor2) {
+    long long int valorDecimal1 = hexaDECIMAL(valor1);
+    long long int valorDecimal2 = hexaDECIMAL(valor2);
+
+    long long int resultadoDecimal = valorDecimal1 - valorDecimal2;
+
+    char resultadoHexadecimal[20];
+    decimalHEXADECIMAL(resultadoDecimal, resultadoHexadecimal);
+    printf ("RESULTADO: %s", resultadoHexadecimal);
+}
+
+void calculadoraHexaMulti(char *valor1, char *valor2) {
+    long long int valorDecimal1 = hexaDECIMAL(valor1);
+    long long int valorDecimal2 = hexaDECIMAL(valor2);
+
+    long long int resultadoDecimal = valorDecimal1 * valorDecimal2;
+
+    char resultadoHexadecimal[20];
+    decimalHEXADECIMAL(resultadoDecimal, resultadoHexadecimal);
+    printf ("RESULTADO: %s", resultadoHexadecimal);
+}
+
+void calculadoraHexaDiv(char *valor1, char *valor2) {
+    long long int valorDecimal1 = hexaDECIMAL(valor1);
+    long long int valorDecimal2 = hexaDECIMAL(valor2);
+
+    long long int resultadoDecimal = valorDecimal1 / valorDecimal2;
+
+    char resultadoHexadecimal[20];
+    decimalHEXADECIMAL(resultadoDecimal, resultadoHexadecimal);
+    printf ("RESULTADO: %s", resultadoHexadecimal);
 }
 
 /*-------------------------------------------------
@@ -913,43 +958,43 @@ void calculadoraHexaAdicao(char *valor1, char *valor2) {
 
 // max: recebe dois números inteiros e retorna o maior dentre eles.
 int max(int num1, int num2) {
-	if (num1 >= num2) {
-		return num1;
-	}
-	else {
-		return num2;
-	}
+    if (num1 >= num2) {
+        return num1;
+    }
+    else {
+        return num2;
+    }
 }
 
 // min: recebe dois números inteiros e retorna o menor dentre eles
 int min(int num1, int num2) {
-	if (num1 <= num2) {
-		return num1;
-	}
-	else {
-		return num2;
-	}
+    if (num1 <= num2) {
+        return num1;
+    }
+    else {
+        return num2;
+    }
 }
 
 // valorNumerico: recebe um caractere e retorna seu valor numérico de acordo com a tabela ascii
 int valorNumerico (char valor) {
-	if (valor >= 'A' && valor <= 'F') {
-			return valor - 55;
-	}
-	else if (valor >= '0' && valor <= '9') {
-		return valor - '0';
-	}
-	return 0;
+    if (valor >= 'A' && valor <= 'F') {
+            return valor - 55;
+    }
+    else if (valor >= '0' && valor <= '9') {
+        return valor - '0';
+    }
+    return 0;
 }
 
 // valorChar: recebe um charactere e retorna seu formato em char, convertendo os números para letras
 char valorChar (int valor) {
-	if (valor > 9) {
-		return valor + 55;
-	}
-	else {
-		return valor + '0';
-	}
+    if (valor > 9) {
+        return valor + 55;
+    }
+    else {
+        return valor + '0';
+    }
 }
 
 /*-------------------------------------------------
