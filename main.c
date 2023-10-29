@@ -472,6 +472,7 @@ int main() {
 					printf(">>Luiz Renato\n");
 					printf(">>Rafael Mattos\n");
 					printf(">>Felipe S\n");
+					printf(">>Joao Pedro\n");
 					//contador = 1, para sair do while true, já que 5 é o caso de saída
 					contador++;
 					break;
@@ -794,6 +795,7 @@ int main() {
 					printf(">>Luiz Renato\n");
 					printf(">>Rafael Mattos\n");
 					printf(">>Felipe S\n");
+					printf(">>Joao Pedro\n");
 					contador++;
 			}
 		}
