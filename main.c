@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <math.h>
 
-
 //transformador de números para caracteres ----> usar em todos os conversores hexadecimais
 char numeroEMCHAR(long long int numero)
  {
