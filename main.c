@@ -149,8 +149,8 @@ int main() {
                             printf(">>Ryan Gabryel\n");
                             printf(">>Luis Renato\n");
                             printf(">>Rafael Mattos\n");
-                            printf(">>Felipe S\n");
-                            printf(">>Joao Pedro\n");
+                            printf(">>Felipe Sucupira\n");
+                            printf(">>João Pedro\n");
                             //contador = 1, para sair do while true, já que 5 é o caso de saída
                             contador++;
                             break;
@@ -192,8 +192,8 @@ int main() {
                             printf(">>Ryan Gabryel\n");
                             printf(">>Luis Renato\n");
                             printf(">>Rafael Mattos\n");
-                            printf(">>Felipe S\n");
-                            printf(">>Joao Pedro\n");
+                            printf(">>Felipe Sucupira\n");
+                            printf(">>João Pedro\n");
                             //contador = 1, para sair do while true, já que 5 é o caso de saída
                             contador++;
                             break;
@@ -235,8 +235,8 @@ int main() {
                             printf(">>Ryan Gabryel\n");
                             printf(">>Luis Renato\n");
                             printf(">>Rafael Mattos\n");
-                            printf(">>Felipe S\n");
-                            printf(">>Joao Pedro\n");
+                            printf(">>Felipe Sucupira\n");
+                            printf(">>João Pedro\n");
                             //contador = 1, para sair do while true, já que 5 é o caso de saída
                             contador++;
                             break;
@@ -550,8 +550,8 @@ int main() {
             printf(">>Ryan Gabryel\n");
             printf(">>Luis Renato\n");
             printf(">>Rafael Mattos\n");
-            printf(">>Felipe S\n");
-            printf(">>Joao Pedro\n");
+            printf(">>Felipe Sucupira\n");
+            printf(">>João Pedro\n");
             contador++;
         } else if(opcao == 4) {
             printf ("%d\n", testOctal());
@@ -1025,6 +1025,7 @@ int calculadoraBinarioDivisao(int num1, int num2){
 }
 
 // calculadoraHexaAdicao: recebe duas strings de números hexadecimais com letras maiúsculas, soma os números e printa o resultado
+// Tem uma complexidade de tempo constante, de O(n)
 void calculadoraHexaAdicao(char *valor1, char *valor2) {
     int algarismo1, algarismo2, numeroAtual;
     int resto = 0;
