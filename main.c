@@ -1205,7 +1205,7 @@ int testCalculadoraOctal() {
 
 int testCalculadoraBinario() {
     int resultado = 0;
-    if (calculadoraBinarioAdicao(1000, 10000) != 11000 || calculadoraBinarioAdicao(111000, 11011) != 1010011 || calculadoraBinarioAdicao(11001, 11001) != 1100010) {
+    if (calculadoraBinarioAdicao(1000, 10000) != 11000 || calculadoraBinarioAdicao(111000, 11011) != 1010011 || calculadoraBinarioAdicao(110001, 110001) != 1100010) {
         resultado += 1;
     }
     if (calculadoraBinarioSubtracao(1000100, 111111) != 101 || calculadoraBinarioSubtracao(111000, 11011) != 11101 || calculadoraBinarioSubtracao(1000, 111) != 1) {
@@ -1214,7 +1214,7 @@ int testCalculadoraBinario() {
     if (calculadoraBinarioMultiplicacao(1000, 10000) != 10000000 || calculadoraBinarioMultiplicacao(111, 1001) != 111111 || calculadoraBinarioMultiplicacao(11011, 10000) != 110110000) {
         resultado += 1;
     }
-    if (calculadoraBinarioDivisao(10000, 1000) != 10 || calculadoraBinarioDivisao(110001, 111) != 111 || calculadoraBinarioDivisao(101000, 1001) != 1001) {
+    if (calculadoraBinarioDivisao(10000, 1000) != 10 || calculadoraBinarioDivisao(110001, 111) != 111 || calculadoraBinarioDivisao(1010001, 1001) != 1001) {
         resultado += 1;
     }
 
