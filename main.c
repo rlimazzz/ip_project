@@ -397,7 +397,54 @@ long long int hexaOCTAL(char Hexa[])
 
 }
 
-
+//calculadoraBinarioAdicao: recebe dois inteiros em binario e converte ambos em decimal
+//depois realiza a soma em decimal e converte o resultado em binário 
+int calculadoraBinarioAdicao(int num1, int num2) {
+        num1 = (long long int)num1;
+        num2 = (long long int)num2;
+    
+            long long int d1 = binarioDECIMAL(num1);
+            long long int d2 = binarioDECIMAL(num2);
+            long long int resultadoDecimal= d1 + d2;
+            long long int resultadoBinario = decimalBINARIO(resultadoDecimal);
+        return (int)resultadoBinario;
+}
+//calculadoraBinarioSubtracao: recebe dois inteiros em binario e converte ambos em decimal
+//depois realiza a subtração em decimal e converte o resultado em binário 
+int calculadoraBinarioSubtracao(int num1, int num2){
+        num1 = (long long int)num1;
+        num2 = (long long int)num2;
+    
+            long long int d1 = binarioDECIMAL(num1);
+            long long int d2 = binarioDECIMAL(num2);
+            long long int resultadoDecimal = d1 - d2;
+            long long int resultadoBinario= decimalBINARIO(resultadoDecimal);
+        return (int)resultadoBinario;
+}
+//calculadoraBinarioMultiplicacao: recebe dois inteiros em binário e converte ambos em decimal
+//depois realiza a multiplicação em decimal e converte o resultado em binário 
+int calculadoraBinarioMultiplicacao (int num1, int num2){
+        num1 = (long long int)num1;
+        num2 = (long long int)num2;
+    
+            long long int d1 = binarioDECIMAL(num1);
+            long long int d2 = binarioDECIMAL(num2);
+            long long int resultadoDecimal = d1 * d2;
+            long long int resultadoBinario = decimalBINARIO(resultadoDecimal);
+        return (int)resultadoBinario;
+}
+//calculadoraBinarioDivisao: recebe dois inteiros em binario e converte ambos em decimal
+//depois realiza a divisão em decimal e converte o resultado em binário 
+int calculadoraBinarioDivisao(int num1, int num2){
+        num1 = (long long int)num1;
+        num2 = (long long int)num2;
+    
+            long long int d1 = binarioDECIMAL(num1);
+            long long int d2 = binarioDECIMAL(num2);
+            long long int resultadoDecimal = d1 / d2;
+            long long int resultadoBinario = decimalBINARIO(resultadoDecimal);
+        return (int)resultadoBinario;
+}
 
 int main() {
     int baseConversor, baseCalculadora, converter, contador = 0, opcao, entradaCalculo1, entradaCalculo2, operacao;
@@ -464,20 +511,24 @@ int main() {
                             printf("--------------------------------------------\n");
                             printf("          	SOMA\n");
                             printf("--------------------------------------------\n\n");
+					
 
                             calculadoraHexaAdicao(entradaHexa1, entradaHexa2);
 
                             break;
+					
 
                         case 2:
 
                             printf("--------------------------------------------\n");
                             printf("          		SUBTRAÇÃO\n");
                             printf("--------------------------------------------\n\n");
+					
 
                             calculadoraHexaSub(entradaHexa1, entradaHexa2);
 
                             break;
+					
 
                         case 3:
 
@@ -512,36 +563,32 @@ int main() {
                             break;
                     }
                     break;
-                default:
+                case 2:
                     switch(operacao) {
                         case 1:
-
                             printf("--------------------------------------------\n");
                             printf("          	SOMA\n");
                             printf("--------------------------------------------\n\n");
+                            printf("Resultado: %d", calculadoraBinarioAdicao(entradaCalculo1, entradaCalculo2));
                             break;
-
                         case 2:
-
                             printf("--------------------------------------------\n");
                             printf("          		SUBTRAÇÃO\n");
                             printf("--------------------------------------------\n\n");
+                            printf("Resultado: %d", calculadoraBinarioSubtracao(entradaCalculo1, entradaCalculo2));
                             break;
-
                         case 3:
-
                             printf("--------------------------------------------\n");
                             printf("          	  MULTIPLICAÇÃO\n");
                             printf("--------------------------------------------\n\n");
+                            printf("Resultado: %d", calculadoraBinarioMultiplicacao(entradaCalculo1, entradaCalculo2));
                             break;
-
                         case 4:
-
                             printf("--------------------------------------------\n");
                             printf("          		DIVISÃO\n");
                             printf("--------------------------------------------\n\n");
+                            printf("Resultado: %d", calculadoraBinarioDivisao(entradaCalculo1, entradaCalculo2));
                             break;
-
                         case 5:
 
                             //agradecimentos finais do código
