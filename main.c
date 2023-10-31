@@ -39,8 +39,9 @@ char valorChar(int valor);
 char numeroEMCHAR(long long int numero);
 long long int charEMNUMERO(char Hexa);
 
-int testCalculadoraOctal();
-int testCalculadoraBinario();
+int testOctal();
+int testBinario();
+void testHexa();
 
 /*-------------------------------------------------
 *Fim da declaração prévia das funções
@@ -553,8 +554,9 @@ int main() {
             printf(">>Joao Pedro\n");
             contador++;
         } else if(opcao == 4) {
-            printf ("%d\n", testCalculadoraOctal());
-            printf ("%d\n", testCalculadoraBinario());
+            printf ("%d\n", testOctal());
+            printf ("%d\n", testBinario());
+            testHexa();
         }
     }
 
@@ -627,7 +629,7 @@ long long int decimalHEXADECIMAL(long long int decimal, char hexa[])
         i++;
         decimal /= 16;
     }
-    hexa[i] = '0';
+    hexa[i] = '\0';
 
     int esquerda = 0;
     int direita = i - 1;
@@ -1185,7 +1187,7 @@ long long int charEMNUMERO(char Hexa)
 * Início dos casos de testes
 -------------------------------------------------*/
 
-int testCalculadoraOctal() {
+int testOctal() {
     int resultado = 0;
     if (calculadoraOctalAdicao(10, 20) != 30 || calculadoraOctalAdicao(70, 33) != 123 || calculadoraOctalAdicao(61, 61) != 142) {
         resultado += 1;
@@ -1203,7 +1205,7 @@ int testCalculadoraOctal() {
     return resultado;
 }
 
-int testCalculadoraBinario() {
+int testBinario() {
     int resultado = 0;
     if (calculadoraBinarioAdicao(1000, 10000) != 11000 || calculadoraBinarioAdicao(111000, 11011) != 1010011 || calculadoraBinarioAdicao(110001, 110001) != 1100010) {
         resultado += 1;
@@ -1219,6 +1221,38 @@ int testCalculadoraBinario() {
     }
 
     return resultado;
+}
+
+void testHexa() {
+    int resultado = 0;
+
+    calculadoraHexaAdicao("8", "10");
+    printf("  ");
+    calculadoraHexaAdicao("38", "1B");
+    printf("  ");
+    calculadoraHexaAdicao("31", "31");
+    printf("\n18  53  62\n");
+
+    calculadoraHexaSub("44", "3F");
+    printf("  ");
+    calculadoraHexaSub("38", "1B");
+    printf("  ");
+    calculadoraHexaSub("8", "7");
+    printf("\n5  1D  1\n");
+
+    calculadoraHexaMulti("8", "10");
+    printf("  ");
+    calculadoraHexaMulti("7", "9");
+    printf("  ");
+    calculadoraHexaMulti("1B", "10");
+    printf("\n80  3F  1B0\n");
+
+    calculadoraHexaDiv("10", "8");
+    printf("  ");
+    calculadoraHexaDiv("31", "7");
+    printf("  ");
+    calculadoraHexaDiv("51", "9");
+    printf("\n2  7  9\n");
 }
 
 /*-------------------------------------------------
