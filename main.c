@@ -19,6 +19,7 @@ char valorChar(int valor);
 *Fim da declaração prévia das funções
 -------------------------------------------------*/
 
+
 //transformador de números para caracteres ----> usar em todos os conversores hexadecimais
 char numeroEMCHAR(long long int numero)
 {
@@ -397,6 +398,47 @@ long long int hexaOCTAL(char Hexa[])
 
 }
 
+int calculadoraOctalAdicao(int num1, int num2) {
+    num1 = (long long int)num1;
+    num2 = (long long int)num2;
+    
+    long long int dec1 = octalldECIMAL(num1);
+    long long int dec2 = octalldECIMAL(num2);
+    long long int resDecimal=dec1 + dec2;
+    long long int resOctal= decimalOCTAL(resDecimal);
+    return (int)resOctal;
+}
+int calculadoraOctalSubtracao(int num1, int num2){
+    num1 = (long long int)num1;
+    num2 = (long long int)num2;
+    
+    long long int dec1 = octalldECIMAL(num1);
+    long long int dec2 = octalldECIMAL(num2);
+    long long int resDecimal=dec1 - dec2;
+    long long int resOctal= decimalOCTAL(resDecimal);
+    return (int)resOctal;
+}
+int calculadoraOctalMultiplicacao (int num1, int num2){
+    num1 = (long long int)num1;
+    num2 = (long long int)num2;
+    
+    long long int dec1 = octalldECIMAL(num1);
+    long long int dec2 = octalldECIMAL(num2);
+    long long int resDecimal=dec1 * dec2;
+    long long int resOctal= decimalOCTAL(resDecimal);
+    return (int)resOctal;
+}
+int calculadoraOctalDivisao(int num1, int num2){
+        num1 = (long long int)num1;
+    num2 = (long long int)num2;
+    
+    long long int dec1 = octalldECIMAL(num1);
+    long long int dec2 = octalldECIMAL(num2);
+    long long int resDecimal=dec1 / dec2;
+    long long int resOctal= decimalOCTAL(resDecimal);
+    return (int)resOctal;
+}
+
 //calculadoraBinarioAdicao: recebe dois inteiros em binario e converte ambos em decimal
 //depois realiza a soma em decimal e converte o resultado em binário 
 int calculadoraBinarioAdicao(int num1, int num2) {
@@ -507,31 +549,22 @@ int main() {
 
                     switch(operacao) {
                         case 1:
-
                             printf("--------------------------------------------\n");
                             printf("          	SOMA\n");
                             printf("--------------------------------------------\n\n");
 					
-
                             calculadoraHexaAdicao(entradaHexa1, entradaHexa2);
 
                             break;
-					
-
                         case 2:
-
                             printf("--------------------------------------------\n");
                             printf("          		SUBTRAÇÃO\n");
                             printf("--------------------------------------------\n\n");
-					
 
                             calculadoraHexaSub(entradaHexa1, entradaHexa2);
 
                             break;
-					
-
                         case 3:
-
                             printf("--------------------------------------------\n");
                             printf("          	  MULTIPLICAÇÃO\n");
                             printf("--------------------------------------------\n\n");
@@ -539,9 +572,7 @@ int main() {
                             calculadoraHexaMulti(entradaHexa1, entradaHexa2);
                             
                             break;
-
                         case 4:
-
                             printf("--------------------------------------------\n");
                             printf("          		DIVISÃO\n");
                             printf("--------------------------------------------\n\n");
@@ -549,12 +580,11 @@ int main() {
                             calculadoraHexaDiv(entradaHexa1, entradaHexa2);
                             
                             break;
-
                         case 5:
                             //agradecimentos finais do código
                             printf(">>Obrigado por usar nosso conversor de medidas! \nFeito pelos alunos:\n");
                             printf(">>Ryan Gabryel\n");
-                            printf(">>Luiz Renato\n");
+                            printf(">>Luis Renato\n");
                             printf(">>Rafael Mattos\n");
                             printf(">>Felipe S\n");
                             printf(">>Joao Pedro\n");
@@ -564,6 +594,9 @@ int main() {
                     }
                     break;
                 case 2:
+                    printf(">>DIGITE OS NÚMEROS QUE DESEJA CALCULAR COM LETRAS MAIÚSCULAS\n");
+                    scanf("%d %d", &entradaCalculo1, &entradaCalculo2);
+
                     switch(operacao) {
                         case 1:
                             printf("--------------------------------------------\n");
@@ -594,7 +627,52 @@ int main() {
                             //agradecimentos finais do código
                             printf(">>Obrigado por usar nosso conversor de medidas! \nFeito pelos alunos:\n");
                             printf(">>Ryan Gabryel\n");
-                            printf(">>Luiz Renato\n");
+                            printf(">>Luis Renato\n");
+                            printf(">>Rafael Mattos\n");
+                            printf(">>Felipe S\n");
+                            printf(">>Joao Pedro\n");
+                            //contador = 1, para sair do while true, já que 5 é o caso de saída
+                            contador++;
+                            break;
+                    }
+                    break;
+                case 8:
+                    printf(">>DIGITE OS NÚMEROS QUE DESEJA CALCULAR COM LETRAS MAIÚSCULAS\n");
+                    scanf("%d %d", &entradaCalculo1, &entradaCalculo2);
+                    
+                    switch(operacao) {
+                        case 1:
+                            printf("--------------------------------------------\n");
+                            printf("          	SOMA\n");
+                            printf("--------------------------------------------\n\n");
+
+                            printf("O resultado é: %d", calculadoraOctalAdicao(entradaCalculo1, entradaCalculo2));
+
+                            break;
+                        case 2:
+                            printf("--------------------------------------------\n");
+                            printf("          		SUBTRAÇÃO\n");
+                            printf("--------------------------------------------\n\n");
+                            printf("O resultado é: %d", calculadoraOctalSubtracao(entradaCalculo1, entradaCalculo2));
+                            break;
+                        case 3:
+                            printf("--------------------------------------------\n");
+                            printf("          	  MULTIPLICAÇÃO\n");
+                            printf("--------------------------------------------\n\n");
+                            printf("O resultado é: %d", calculadoraOctalMultiplicacao(entradaCalculo1, entradaCalculo2));
+                            break;
+                        case 4:
+                            printf("--------------------------------------------\n");
+                            printf("          		DIVISÃO\n");
+                            printf("--------------------------------------------\n\n");
+                            printf("O resultado é: %d", calculadoraOctalDivisao(entradaCalculo1, entradaCalculo2));
+                            break;
+                        case 5:
+
+                            //agradecimentos finais do código
+                            printf(">>Obrigado por usar nosso conversor de medidas! \nFeito pelos alunos:\n");
+                            printf(">>Ryan Gabryel\n");
+                            printf(">>Luis Renato\n");
                             printf(">>Rafael Mattos\n");
                             printf(">>Felipe S\n");
                             printf(">>Joao Pedro\n");
@@ -911,7 +989,7 @@ int main() {
         } else if(opcao == 3) {
             printf("\n\n>>Obrigado por usar nosso conversor de medidas! \nFeito pelos alunos:\n");
             printf(">>Ryan Gabryel\n");
-            printf(">>Luiz Renato\n");
+            printf(">>Luis Renato\n");
             printf(">>Rafael Mattos\n");
             printf(">>Felipe S\n");
             printf(">>Joao Pedro\n");
