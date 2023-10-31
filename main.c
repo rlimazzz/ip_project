@@ -6,6 +6,14 @@
 * Início da declaração prévia das funções
 -------------------------------------------------*/
 
+int calculadoraOctalAdicao(int num1, int num2);
+int calculadoraOctalSubtracao(int num1, int num2);
+int calculadoraOctalMultiplicacao (int num1, int num2);
+int calculadoraOctalDivisao(int num1, int num2);
+int calculadoraBinarioAdicao(int num1, int num2);
+int calculadoraBinarioSubtracao(int num1, int num2);
+int calculadoraBinarioMultiplicacao (int num1, int num2);
+int calculadoraBinarioDivisao(int num1, int num2);
 void calculadoraHexaAdicao(char *valor1, char *valor2);
 void calculadoraHexaSub(char *valor1, char *valor2);
 void calculadoraHexaMulti(char *valor1, char *valor2);
@@ -24,7 +32,8 @@ long long int hexaDECIMAL(char Hexa[]);
 long long int hexaBINARIO(char Hexa[]);
 long long int hexaOCTAL(char Hexa[]);
 
-int max(int, int);
+int max(int num1, int num2);
+int min(int num1, int num2);
 int valorNumerico(char valor);
 char valorChar(int valor);
 char numeroEMCHAR(long long int numero);
@@ -99,17 +108,14 @@ int main() {
 
                     switch(operacao) {
                         case 1:
-
                             printf("--------------------------------------------\n");
                             printf("          	SOMA\n");
                             printf("--------------------------------------------\n\n");
-
+					
                             calculadoraHexaAdicao(entradaHexa1, entradaHexa2);
 
                             break;
-
                         case 2:
-
                             printf("--------------------------------------------\n");
                             printf("          		SUBTRAÇÃO\n");
                             printf("--------------------------------------------\n\n");
@@ -117,9 +123,7 @@ int main() {
                             calculadoraHexaSub(entradaHexa1, entradaHexa2);
 
                             break;
-
                         case 3:
-
                             printf("--------------------------------------------\n");
                             printf("          	  MULTIPLICAÇÃO\n");
                             printf("--------------------------------------------\n\n");
@@ -127,9 +131,7 @@ int main() {
                             calculadoraHexaMulti(entradaHexa1, entradaHexa2);
                             
                             break;
-
                         case 4:
-
                             printf("--------------------------------------------\n");
                             printf("          		DIVISÃO\n");
                             printf("--------------------------------------------\n\n");
@@ -137,57 +139,100 @@ int main() {
                             calculadoraHexaDiv(entradaHexa1, entradaHexa2);
                             
                             break;
-
                         case 5:
                             //agradecimentos finais do código
                             printf(">>Obrigado por usar nosso conversor de medidas! \nFeito pelos alunos:\n");
                             printf(">>Ryan Gabryel\n");
-                            printf(">>Luiz Renato\n");
+                            printf(">>Luis Renato\n");
                             printf(">>Rafael Mattos\n");
                             printf(">>Felipe S\n");
+                            printf(">>Joao Pedro\n");
                             //contador = 1, para sair do while true, já que 5 é o caso de saída
                             contador++;
                             break;
                     }
                     break;
-                default:
+                case 2:
+                    printf(">>DIGITE OS NÚMEROS QUE DESEJA CALCULAR COM LETRAS MAIÚSCULAS\n");
+                    scanf("%d %d", &entradaCalculo1, &entradaCalculo2);
+
                     switch(operacao) {
                         case 1:
-
                             printf("--------------------------------------------\n");
                             printf("          	SOMA\n");
                             printf("--------------------------------------------\n\n");
+                            printf("Resultado: %d", calculadoraBinarioAdicao(entradaCalculo1, entradaCalculo2));
                             break;
-
                         case 2:
-
                             printf("--------------------------------------------\n");
                             printf("          		SUBTRAÇÃO\n");
                             printf("--------------------------------------------\n\n");
+                            printf("Resultado: %d", calculadoraBinarioSubtracao(entradaCalculo1, entradaCalculo2));
                             break;
-
                         case 3:
-
                             printf("--------------------------------------------\n");
                             printf("          	  MULTIPLICAÇÃO\n");
                             printf("--------------------------------------------\n\n");
+                            printf("Resultado: %d", calculadoraBinarioMultiplicacao(entradaCalculo1, entradaCalculo2));
                             break;
-
                         case 4:
-
                             printf("--------------------------------------------\n");
                             printf("          		DIVISÃO\n");
                             printf("--------------------------------------------\n\n");
+                            printf("Resultado: %d", calculadoraBinarioDivisao(entradaCalculo1, entradaCalculo2));
                             break;
-
                         case 5:
 
                             //agradecimentos finais do código
                             printf(">>Obrigado por usar nosso conversor de medidas! \nFeito pelos alunos:\n");
                             printf(">>Ryan Gabryel\n");
-                            printf(">>Luiz Renato\n");
+                            printf(">>Luis Renato\n");
                             printf(">>Rafael Mattos\n");
                             printf(">>Felipe S\n");
+                            printf(">>Joao Pedro\n");
+                            //contador = 1, para sair do while true, já que 5 é o caso de saída
+                            contador++;
+                            break;
+                    }
+                    break;
+                case 8:
+                    printf(">>DIGITE OS NÚMEROS QUE DESEJA CALCULAR COM LETRAS MAIÚSCULAS\n");
+                    scanf("%d %d", &entradaCalculo1, &entradaCalculo2);
+                    
+                    switch(operacao) {
+                        case 1:
+                            printf("--------------------------------------------\n");
+                            printf("          	SOMA\n");
+                            printf("--------------------------------------------\n\n");
+                            printf("O resultado é: %d", calculadoraOctalAdicao(entradaCalculo1, entradaCalculo2));
+                            break;
+                        case 2:
+                            printf("--------------------------------------------\n");
+                            printf("          		SUBTRAÇÃO\n");
+                            printf("--------------------------------------------\n\n");
+                            printf("O resultado é: %d", calculadoraOctalSubtracao(entradaCalculo1, entradaCalculo2));
+                            break;
+                        case 3:
+                            printf("--------------------------------------------\n");
+                            printf("          	  MULTIPLICAÇÃO\n");
+                            printf("--------------------------------------------\n\n");
+                            printf("O resultado é: %d", calculadoraOctalMultiplicacao(entradaCalculo1, entradaCalculo2));
+                            break;
+                        case 4:
+                            printf("--------------------------------------------\n");
+                            printf("          		DIVISÃO\n");
+                            printf("--------------------------------------------\n\n");
+                            printf("O resultado é: %d", calculadoraOctalDivisao(entradaCalculo1, entradaCalculo2));
+                            break;
+                        case 5:
+
+                            //agradecimentos finais do código
+                            printf(">>Obrigado por usar nosso conversor de medidas! \nFeito pelos alunos:\n");
+                            printf(">>Ryan Gabryel\n");
+                            printf(">>Luis Renato\n");
+                            printf(">>Rafael Mattos\n");
+                            printf(">>Felipe S\n");
+                            printf(">>Joao Pedro\n");
                             //contador = 1, para sair do while true, já que 5 é o caso de saída
                             contador++;
                             break;
@@ -499,7 +544,7 @@ int main() {
         } else if(opcao == 3) {
             printf("\n\n>>Obrigado por usar nosso conversor de medidas! \nFeito pelos alunos:\n");
             printf(">>Ryan Gabryel\n");
-            printf(">>Luiz Renato\n");
+            printf(">>Luis Renato\n");
             printf(">>Rafael Mattos\n");
             printf(">>Felipe S\n");
             printf(">>Joao Pedro\n");
@@ -875,6 +920,102 @@ long long int hexaOCTAL(char Hexa[])
 * Início das funções de calculadora
 -------------------------------------------------*/
 
+int calculadoraOctalAdicao(int num1, int num2) {
+    num1 = (long long int)num1;
+    num2 = (long long int)num2;
+    
+    long long int dec1 = octalldECIMAL(num1);
+    long long int dec2 = octalldECIMAL(num2);
+    long long int resDecimal=dec1 + dec2;
+    long long int resOctal= decimalOCTAL(resDecimal);
+    return (int)resOctal;
+}
+
+int calculadoraOctalSubtracao(int num1, int num2){
+    num1 = (long long int)num1;
+    num2 = (long long int)num2;
+    
+    long long int dec1 = octalldECIMAL(num1);
+    long long int dec2 = octalldECIMAL(num2);
+    long long int resDecimal=dec1 - dec2;
+    long long int resOctal= decimalOCTAL(resDecimal);
+    return (int)resOctal;
+}
+
+int calculadoraOctalMultiplicacao (int num1, int num2){
+    num1 = (long long int)num1;
+    num2 = (long long int)num2;
+    
+    long long int dec1 = octalldECIMAL(num1);
+    long long int dec2 = octalldECIMAL(num2);
+    long long int resDecimal=dec1 * dec2;
+    long long int resOctal= decimalOCTAL(resDecimal);
+    return (int)resOctal;
+}
+
+int calculadoraOctalDivisao(int num1, int num2){
+        num1 = (long long int)num1;
+    num2 = (long long int)num2;
+    
+    long long int dec1 = octalldECIMAL(num1);
+    long long int dec2 = octalldECIMAL(num2);
+    long long int resDecimal=dec1 / dec2;
+    long long int resOctal= decimalOCTAL(resDecimal);
+    return (int)resOctal;
+}
+
+//calculadoraBinarioAdicao: recebe dois inteiros em binario e converte ambos em decimal
+//depois realiza a soma em decimal e converte o resultado em binário 
+int calculadoraBinarioAdicao(int num1, int num2) {
+        num1 = (long long int)num1;
+        num2 = (long long int)num2;
+    
+            long long int d1 = binarioDECIMAL(num1);
+            long long int d2 = binarioDECIMAL(num2);
+            long long int resultadoDecimal= d1 + d2;
+            long long int resultadoBinario = decimalBINARIO(resultadoDecimal);
+        return (int)resultadoBinario;
+}
+
+//calculadoraBinarioSubtracao: recebe dois inteiros em binario e converte ambos em decimal
+//depois realiza a subtração em decimal e converte o resultado em binário 
+int calculadoraBinarioSubtracao(int num1, int num2){
+        num1 = (long long int)num1;
+        num2 = (long long int)num2;
+    
+            long long int d1 = binarioDECIMAL(num1);
+            long long int d2 = binarioDECIMAL(num2);
+            long long int resultadoDecimal = d1 - d2;
+            long long int resultadoBinario= decimalBINARIO(resultadoDecimal);
+        return (int)resultadoBinario;
+}
+
+//calculadoraBinarioMultiplicacao: recebe dois inteiros em binário e converte ambos em decimal
+//depois realiza a multiplicação em decimal e converte o resultado em binário 
+int calculadoraBinarioMultiplicacao (int num1, int num2){
+        num1 = (long long int)num1;
+        num2 = (long long int)num2;
+    
+            long long int d1 = binarioDECIMAL(num1);
+            long long int d2 = binarioDECIMAL(num2);
+            long long int resultadoDecimal = d1 * d2;
+            long long int resultadoBinario = decimalBINARIO(resultadoDecimal);
+        return (int)resultadoBinario;
+}
+
+//calculadoraBinarioDivisao: recebe dois inteiros em binario e converte ambos em decimal
+//depois realiza a divisão em decimal e converte o resultado em binário 
+int calculadoraBinarioDivisao(int num1, int num2){
+        num1 = (long long int)num1;
+        num2 = (long long int)num2;
+    
+            long long int d1 = binarioDECIMAL(num1);
+            long long int d2 = binarioDECIMAL(num2);
+            long long int resultadoDecimal = d1 / d2;
+            long long int resultadoBinario = decimalBINARIO(resultadoDecimal);
+        return (int)resultadoBinario;
+}
+
 // calculadoraHexaAdicao: recebe duas strings de números hexadecimais com letras maiúsculas, soma os números e printa o resultado
 void calculadoraHexaAdicao(char *valor1, char *valor2) {
     int algarismo1, algarismo2, numeroAtual;
@@ -913,6 +1054,7 @@ void calculadoraHexaAdicao(char *valor1, char *valor2) {
     printf("RESULTADO: %s", resultado);
 }
 
+// calculadoraHexaSub: recebe duas strings de números hexadecimais com letras maiúsculas, subtrai os números e printa o resultado
 void calculadoraHexaSub(char *valor1, char *valor2) {
     long long int valorDecimal1 = hexaDECIMAL(valor1);
     long long int valorDecimal2 = hexaDECIMAL(valor2);
@@ -924,6 +1066,7 @@ void calculadoraHexaSub(char *valor1, char *valor2) {
     printf ("RESULTADO: %s", resultadoHexadecimal);
 }
 
+// calculadoraHexaMulti: recebe duas strings de números hexadecimais com letras maiúsculas, multiplica os números e printa o resultado
 void calculadoraHexaMulti(char *valor1, char *valor2) {
     long long int valorDecimal1 = hexaDECIMAL(valor1);
     long long int valorDecimal2 = hexaDECIMAL(valor2);
@@ -935,6 +1078,7 @@ void calculadoraHexaMulti(char *valor1, char *valor2) {
     printf ("RESULTADO: %s", resultadoHexadecimal);
 }
 
+// calculadoraHexaDiv: recebe duas strings de números hexadecimais com letras maiúsculas, divide os números e printa o resultado
 void calculadoraHexaDiv(char *valor1, char *valor2) {
     long long int valorDecimal1 = hexaDECIMAL(valor1);
     long long int valorDecimal2 = hexaDECIMAL(valor2);
@@ -1022,6 +1166,10 @@ long long int charEMNUMERO(char Hexa)
         return -1;
     }
 }
+
+// as funções valorNumerico e charEMNUMERO são equivalentes, assim como as funções valorChar e numeroEMCHAR,
+// mas como elas retornam tipos diferentes, remover uma significaria ter q alterar várias das funções do código,
+// então preferimos deixar as duas.
 
 /*-------------------------------------------------
 * Fim das funções globais
