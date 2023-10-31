@@ -14,11 +14,16 @@ No começo ficam declarações prévias das funções, depois a função main, o
 ## Especificações
 A calculadora e o conversor funcionam apenas com números inteiros positivos.
 
+## Testes
+Fizemos casos de testes para as funções da calculadora. Como elas são baseadas nas funções de conversão, o funcionamento da calculadora garante o funcionamento do conversor.
+Os testes se encontram nas funções testHexa, testBinario e testOctal. Se apertar 4 no menu, elas são chamadas.
+
 ## Desafio
 Nós nos desafiamos a fazer a função de adição hexadecimal (calculadoraHexaAdicao) sem utilizar as funções de conversão.
 
 ### Integrandes
-* Luis Renato
-* Ryan Gabryel
-* Rafael Mattos
-* João Pedro
+* Luis Renato - Calculadora Octal
+* Ryan Gabryel - Menu
+* Rafael Mattos - Conversor
+* João Pedro - Calculadora Binário
+* Felipe Sucupira - Calculadora Hexadecimal
